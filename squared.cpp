@@ -45,19 +45,27 @@ struct compl_num {
 
 
 // Defining functions
+// Debug
+int DebugRoots(enum NUM_ROOTS n_roots) {
+    printf("%d\n", n_roots);
+    return 0;
+}
 
 // Functions for error calcucation
 double CalcErrorBDividedBy2A(struct exp_data* a, struct exp_data* b) {
+    printf("Error -B/2a: %lg\n", sqrt(pow(b->sigma, 2) + pow(b->value * a->sigma / a->value, 2)) / (2 * a->value));
     return sqrt(pow(b->sigma, 2) + pow(b->value * a->sigma / a->value, 2)) / (2 * a->value);
 }
 
 double CalcErrorD(struct exp_data* a, struct exp_data* b, struct exp_data* c) {
-    return 2 * sqrt(pow(b->value * b->sigma, 2) + 4 * (pow(c->value * a->sigma, 2) + pow(a->value, c->sigma)));
+    printf("Error D: %lg\n", 2 * sqrt(pow(b->value * b->sigma, 2) + 4 * (pow(c->value * a->sigma, 2) + pow(a->value, c->sigma))));
+    return 2 * sqrt(pow(b->value * b->sigma, 2) + 4 * (pow(c->value * a->sigma, 2) + pow(a->value * c->sigma, 2)));
 }
 
 
 // Function for equality taking in mind error
 int AlmostEquals(double val1, double val2, double sigma) {
+    printf("Almost equals: %d\n", (val1 + sigma >= val2) && (val1 - sigma <= val2));
     return (val1 + sigma >= val2) && (val1 - sigma <= val2);
 }
 
@@ -100,11 +108,13 @@ enum NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b,
     double b = data_b->value;
     double c = data_c->value;
 
+    // Calculating discriminant
     double d = pow(b, 2) - 4 * a * c;
     if (AlmostEquals(d, 0, CalcErrorD(data_a, data_b, data_c))) {
+        n_roots = ONE_ROOT;
+        DebugRoots(n_roots);
         x1->real = x2->real = - b / (2 * a);  // a != 0
         x1->status = x2->status = REAL;
-        n_roots = ONE_ROOT;
     } else {
         n_roots = TWO_ROOTS;
         if (d > 0) {
@@ -138,9 +148,7 @@ enum NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b,
 // Function for solving square equation
 enum NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2) 
 {
-
     // checking the inputs
-    // std remove
     assert(data_a != NULL);
     assert(data_b != NULL);
     assert(data_c != NULL);
