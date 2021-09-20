@@ -2,6 +2,9 @@
 #include <math.h>
 #include <assert.h>
 
+// Defining enums
+
+// Defining enum for number of roots
 enum NUM_ROOTS {
     INF_ROOTS = -1,
     NO_ROOTS  =  0,
@@ -10,25 +13,29 @@ enum NUM_ROOTS {
     ERROR_ROOTS = -10
 };
 
+// Defining enum for calculating errors
+enum MARGIN_TYPE {
+    D = 1,
+    B_DIVIDE_2A = 0
+};
+
+// Defining enum for experimental data with error margins
+struct exp_data {
+    double value;
+    double sigma;
+};
+
+
+// Defining complex number
+
+// Defining enum for complex number marker
 enum STATUS {
         REAL = 1,
         IMAGINARY = -1,
         COMPLEX = 0,
         ERROR_STATUS = -10
 };
-
-// Calculating errors
-enum MARGIN_TYPE {
-    D = 1,
-    B_DIVIDE_2A = 0
-};
-
-// Experimental data
-struct exp_data {
-    double value;
-    double sigma;
-};
-
+// Defining complex number structure
 struct compl_num {
     enum STATUS status;
     double real;
@@ -36,6 +43,10 @@ struct compl_num {
 
 };
 
+
+// Defining functions
+
+// Functions for error calcucation
 double CalcErrorBDividedBy2A(struct exp_data* a, struct exp_data* b) {
     return sqrt(pow(b->sigma, 2) + pow(b->value * a->sigma / a->value, 2)) / (2 * a->value);
 }
@@ -44,32 +55,18 @@ double CalcErrorD(struct exp_data* a, struct exp_data* b, struct exp_data* c) {
     return 2 * sqrt(pow(b->value * b->sigma, 2) + 4 * (pow(c->value * a->sigma, 2) + pow(a->value, c->sigma)));
 }
 
+
+// Function for equality taking in mind error
 int AlmostEquals(double val1, double val2, double sigma) {
     return (val1 + sigma >= val2) && (val1 - sigma <= val2);
 }
 
-int PrintComplexNum(struct compl_num* num) {
-    switch(num->status) {
-        case REAL:
-            printf("%lg", num->real);
-            break;
-        case IMAGINARY:
-            printf("%lgi", num->im);
-            break;
-        case COMPLEX:
-            printf("%lg + %lgi", num->real, num->im);
-            break;
-        default:
-            printf("Error in PrintComplexNum!\n"
-                   "num->status = %d", num->status);
-            return -1;
-    }
-    return 0;
-}
 
+// Defining functions for solving equation
 
-
-int SolveLinear(enum NUM_ROOTS* p_n_roots, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x) {
+// Function for solving linear equation
+enum NUM_ROOTS SolveLinear(struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x) {
+    enum NUM_ROOTS n_roots = ERROR_ROOTS;
     double b = data_b->value;
     double c = data_c->value;
     assert(isfinite(b));
@@ -79,56 +76,66 @@ int SolveLinear(enum NUM_ROOTS* p_n_roots, struct exp_data* data_b, struct exp_d
 
     if (AlmostEquals(b, 0, data_b->sigma)) {
         if (AlmostEquals(c, 0, data_c->sigma)) {
-            *p_n_roots = INF_ROOTS;
+            n_roots = INF_ROOTS;
         }
         else {
-            *p_n_roots = NO_ROOTS;
+            n_roots = NO_ROOTS;
         }
     } 
     else {
         x->status = REAL;
         x->real = - c / b;
         x->im = 0;
-        *p_n_roots = ONE_ROOT;
+        n_roots = ONE_ROOT;
     }
-    return 0;
+    return n_roots;
 }
 
-int FindSquareRoots(double d, struct exp_data* data_a, struct exp_data* data_b, struct compl_num* x1, struct compl_num* x2) {
-    double b = data_b->value;
+// Function for finding square roots
+enum NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2) {
+    // a != 0 guaranteed from parent function
+    enum NUM_ROOTS n_roots = ERROR_ROOTS;
+
     double a = data_a->value;
+    double b = data_b->value;
+    double c = data_c->value;
 
-    if (d > 0) {
-        double sqrt_d = sqrt(d);
-
+    double d = pow(b, 2) - 4 * a * c;
+    if (AlmostEquals(d, 0, CalcErrorD(data_a, data_b, data_c))) {
+        x1->real = x2->real = - b / (2 * a);  // a != 0
         x1->status = x2->status = REAL;
+        n_roots = ONE_ROOT;
+    } else {
+        n_roots = TWO_ROOTS;
+        if (d > 0) {
+            double sqrt_d = sqrt(d);
 
-        x1->real = - b + sqrt_d / (2 * a);
-        x1->im = 0;
+            x1->status = x2->status = REAL;
 
-        x2->real = - b - sqrt_d / (2 * a);
-        x1->im = 0;
+            x1->real = - b + sqrt_d / (2 * a);
+            x1->im = 0;
 
-        return 0;
+            x2->real = - b - sqrt_d / (2 * a);
+            x1->im = 0;
+        } else {  // Complex roots
+            double sqrt_d = sqrt(-d);
 
-    } else {  // is_im == 1
-        double sqrt_d = sqrt(-d);
+            if (AlmostEquals(- b / (2 * a), 0, CalcErrorBDividedBy2A(data_a, data_b))) {
+                x1->status = x2->status = IMAGINARY;
+                x1->real = x2->real = 0;
+            } else {
+                x1->real = x2->real = -b / (2 * a);
+                x1->status = x2->status = COMPLEX;
+            }
 
-        if (AlmostEquals(- b / (2 * a), 0, CalcErrorBDividedBy2A(data_a, data_b))) {
-            x1->status = x2->status = IMAGINARY;
-            x1->real = x2->real = 0;
-        } else {
-            x1->real = x2->real = -b / (2 * a);
-            x1->status = x2->status = COMPLEX;
+            x1->im = sqrt_d / (2 * a);
+            x2->im = -sqrt_d / (2 * a);
         }
-
-        x1->im = sqrt_d / (2 * a);
-        x2->im = -sqrt_d / (2 * a);
-
-        return 0;
     }
+    return n_roots;
 }
 
+// Function for solving square equation
 enum NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2) 
 {
 
@@ -138,39 +145,48 @@ enum NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, st
     assert(data_b != NULL);
     assert(data_c != NULL);
 
-    double a = data_a->value;
-    double b = data_b->value;
-    double c = data_c->value;
-
-    assert(isfinite(a));
-    assert(isfinite(b));
-    assert(isfinite(c));
+    assert(isfinite(data_a->value));
+    assert(isfinite(data_b->value));
+    assert(isfinite(data_c->value));
 
     assert(x1 != NULL);
     assert(x2 != NULL);
     assert(x1 != x2);
 
-
     enum NUM_ROOTS n_roots = ERROR_ROOTS;
-    enum NUM_ROOTS* p_n_roots = &n_roots;
 
     if (AlmostEquals(data_a->value, 0, data_a->sigma)) {
-        SolveLinear(p_n_roots, data_b, data_c, x1);
+        n_roots = SolveLinear(data_b, data_c, x1);
     } else {	
-        double d = 0;
-        d = pow(b, 2) - 4 * a * c;
-        if (AlmostEquals(d, 0, CalcErrorD(data_a, data_b, data_c))) {
-            x1->real = x2->real = - b / (2 * a); // a <> 0
-            x1->status = x2->status = REAL;
-            n_roots = ONE_ROOT;
-        } else {
-            n_roots = TWO_ROOTS;
-            FindSquareRoots(d, data_a, data_b, x1, x2);
-        }
+        n_roots = FindSquareRoots(data_a, data_b, data_c, x1, x2);
 	}
     return n_roots;
 }
 
+
+// Defining functions for printing
+
+// Function for printing complex numbers
+int PrintComplexNum(struct compl_num* number) {
+    switch(number->status) {
+        case REAL:
+            printf("%lg", number->real);
+            break;
+        case IMAGINARY:
+            printf("%lgi", number->im);
+            break;
+        case COMPLEX:
+            printf("%lg + %lgi", number->real, number->im);
+            break;
+        default:
+            printf("Error in PrintComplexNum!\n"
+                   "num->status = %d", number->status);
+            return -1;
+    }
+    return 0;
+}
+
+// Function for printing result
 int PrintResult(enum NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* x2) {
     printf("Roots of the equation: ");
     switch(n_roots) {
