@@ -256,7 +256,6 @@ int main() {
 //	double a  = NAN, b  = NAN, c = NAN;
 //	double x1 = NAN, x2 = NAN;
 
-
     enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
     PrintResult(n_roots, x1, x2);
     return 0;
