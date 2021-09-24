@@ -1,0 +1,1 @@
+int ReadOnegin(char path[]);
