@@ -1,25 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
+#include "header.h"
 
-// Defining enums
-
-// Defining enum for number of roots
-enum NUM_ROOTS {
-    INF_ROOTS = -1,
-    NO_ROOTS  =  0,
-    ONE_ROOT  =  1,
-    TWO_ROOTS =  2,
-    ERROR_ROOTS = -10
-};
-
-// Defining enum for calculating errors
-enum MARGIN_TYPE {
-    D = 1,
-    B_DIVIDE_2A = 0
-};
-
-// Defining enum for experimental data with error margins
+// Defining struct for experimental data with error margins
 struct exp_data {
     double value;
     double sigma;
@@ -28,44 +12,57 @@ struct exp_data {
 
 // Defining complex number
 
-// Defining enum for complex number marker
-enum STATUS {
-        REAL = 1,
-        IMAGINARY = -1,
-        COMPLEX = 0,
-        ERROR_STATUS = -10
-};
 // Defining complex number structure
 struct compl_num {
     enum STATUS status;
     double real;
     double im;
-
 };
 
 
-// Defining functions
-// Debug
-int DebugRoots(enum NUM_ROOTS n_roots) {
-    printf("%d\n", n_roots);
+int main() {
+
+    printf("Solve square equation\n"
+           "Input a, b, c:\n");
+
+    // Initializing variables
+    struct exp_data data_a = {NAN, NAN};
+    struct exp_data data_b = {NAN, NAN};
+    struct exp_data data_c = {NAN, NAN};
+    struct compl_num x1 = {ERROR_STATUS, NAN, NAN};
+    struct compl_num x2 = {ERROR_STATUS, NAN, NAN};
+
+    scanf("%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value));
+
+    printf("Input error margins:\n");
+
+    scanf("%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma));
+
+//	double a  = NAN, b  = NAN, c = NAN;
+//	double x1 = NAN, x2 = NAN;
+
+    enum NUM_ROOTS n_roots = SolveSquared(&data_a, &data_b, &data_c, &x1, &x2);
+    PrintResult(n_roots, &x1, &x2);
     return 0;
 }
 
+// Defining functions
+
 // Functions for error calcucation
 double CalcErrorBDividedBy2A(struct exp_data* a, struct exp_data* b) {
-    printf("Error -B/2a: %lg\n", sqrt(pow(b->sigma, 2) + pow(b->value * a->sigma / a->value, 2)) / (2 * a->value));
+    // printf("Error -B/2a: %lg\n", sqrt(pow(b->sigma, 2) + pow(b->value * a->sigma / a->value, 2)) / (2 * a->value));
     return sqrt(pow(b->sigma, 2) + pow(b->value * a->sigma / a->value, 2)) / (2 * a->value);
 }
 
 double CalcErrorD(struct exp_data* a, struct exp_data* b, struct exp_data* c) {
-    printf("Error D: %lg\n", 2 * sqrt(pow(b->value * b->sigma, 2) + 4 * (pow(c->value * a->sigma, 2) + pow(a->value, c->sigma))));
+    // printf("Error D: %lg\n", 2 * sqrt(pow(b->value * b->sigma, 2) + 4 * (pow(c->value * a->sigma, 2) + pow(a->value, c->sigma))));
     return 2 * sqrt(pow(b->value * b->sigma, 2) + 4 * (pow(c->value * a->sigma, 2) + pow(a->value * c->sigma, 2)));
 }
 
 
 // Function for equality taking in mind error
 int AlmostEquals(double val1, double val2, double sigma) {
-    printf("Almost equals: %d\n", (val1 + sigma >= val2) && (val1 - sigma <= val2));
+    // printf("Almost equals: %d\n", (val1 + sigma >= val2) && (val1 - sigma <= val2));
     return (val1 + sigma >= val2) && (val1 - sigma <= val2);
 }
 
@@ -89,7 +86,7 @@ enum NUM_ROOTS SolveLinear(struct exp_data* data_b, struct exp_data* data_c, str
         else {
             n_roots = NO_ROOTS;
         }
-    } 
+    }
     else {
         x->status = REAL;
         x->real = - c / b;
@@ -112,7 +109,6 @@ enum NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b,
     double d = pow(b, 2) - 4 * a * c;
     if (AlmostEquals(d, 0, CalcErrorD(data_a, data_b, data_c))) {
         n_roots = ONE_ROOT;
-        DebugRoots(n_roots);
         x1->real = x2->real = - b / (2 * a);  // a != 0
         x1->status = x2->status = REAL;
     } else {
@@ -121,10 +117,8 @@ enum NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b,
             double sqrt_d = sqrt(d);
 
             x1->status = x2->status = REAL;
-
             x1->real = - b + sqrt_d / (2 * a);
             x1->im = 0;
-
             x2->real = - b - sqrt_d / (2 * a);
             x1->im = 0;
         } else {  // Complex roots
@@ -226,37 +220,5 @@ int PrintResult(enum NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* 
                     "n_roots = %d\n", n_roots);
             return -1;
     }
-    return 0;
-}
-
-int main() {
-
-    printf("Solve square equation\n"
-           "Input a, b, c:\n");
-
-    // Initializing variables
-    struct exp_data data_a_val = {NAN, NAN};
-    struct exp_data data_b_val = {NAN, NAN};
-    struct exp_data data_c_val = {NAN, NAN};
-    struct compl_num x1_val = {ERROR_STATUS, NAN, NAN};
-    struct compl_num x2_val = {ERROR_STATUS, NAN, NAN};
-
-    struct exp_data* data_a = &data_a_val;
-    struct exp_data* data_b = &data_b_val;
-    struct exp_data* data_c = &data_c_val;
-    struct compl_num* x1 = &x1_val;
-    struct compl_num* x2 = &x2_val;
-
-    scanf("%lg %lg %lg", &(data_a_val.value), &(data_b_val.value), &(data_c_val.value));
-
-    printf("Input error margins:\n");
-
-    scanf("%lg %lg %lg", &(data_a_val.sigma), &(data_b_val.sigma), &(data_c_val.sigma));
-
-//	double a  = NAN, b  = NAN, c = NAN;
-//	double x1 = NAN, x2 = NAN;
-
-    enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
-    PrintResult(n_roots, x1, x2);
     return 0;
 }
