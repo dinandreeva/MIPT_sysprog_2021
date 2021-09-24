@@ -11,7 +11,7 @@ int main(){
 
 int ReadOnegin(char path[]) {
     FILE *poem;
-    poem = fopen(*path, "r");
+    poem = fopen(path, "r");
     if (poem == NULL) {
         printf("Cannot open file.\n");
         return 0;

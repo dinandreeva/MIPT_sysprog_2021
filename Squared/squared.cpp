@@ -38,9 +38,6 @@ int main() {
 
     scanf("%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma));
 
-//	double a  = NAN, b  = NAN, c = NAN;
-//	double x1 = NAN, x2 = NAN;
-
     enum NUM_ROOTS n_roots = SolveSquared(&data_a, &data_b, &data_c, &x1, &x2);
     PrintResult(n_roots, &x1, &x2);
     return 0;
@@ -219,6 +216,55 @@ int PrintResult(enum NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* 
             printf("Error in PrintResult!\n"
                     "n_roots = %d\n", n_roots);
             return -1;
+    }
+    return 0;
+}
+
+int ScanCheck(int n_needed, int n_scanned) {
+    if (n_needed <= 0) {
+        printf("You can't request to read zero arguments.");
+        return -1;
+    } else {
+        if (n_scanned == n_needed) {
+            return 0;
+        } else {
+            printf("Number of read arguments not equal to number needed.");
+            return -1;
+        }
+    }
+}
+
+// Defining Unit Test function
+
+int UnitTest(char path[]) {
+    FILE *tests;
+    tests = fopen(path, "r");
+    if (tests == NULL) {
+        printf("Cannot open file with tests.\n");
+        return 0;
+    } else {
+        int test_results[100];
+
+        struct exp_data data_a;
+        struct exp_data data_b;
+        struct exp_data data_c;
+
+        struct compl_num x1;
+        struct compl_num x2;
+
+        int n_tests;
+
+        int n_roots;
+        char root_type;
+
+        ScanCheck(1, fscanf(tests, "%d", &n_tests));
+
+        for (int i = 0; i < n_tests; ++i) {
+            ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
+            ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
+            ScanCheck(2, fscanf(tests, "%d %c", &n_roots, &root_type));
+            // checking roots
+        }
     }
     return 0;
 }
