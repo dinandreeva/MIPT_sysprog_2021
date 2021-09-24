@@ -32,14 +32,15 @@ int main() {
     struct compl_num x1 = {ERROR_STATUS, NAN, NAN};
     struct compl_num x2 = {ERROR_STATUS, NAN, NAN};
 
-    scanf("%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value));
+    ScanCheck(3, scanf("%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
 
     printf("Input error margins:\n");
 
-    scanf("%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma));
+    ScanCheck(3, scanf("%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
 
     enum NUM_ROOTS n_roots = SolveSquared(&data_a, &data_b, &data_c, &x1, &x2);
     PrintResult(n_roots, &x1, &x2);
+
     return 0;
 }
 

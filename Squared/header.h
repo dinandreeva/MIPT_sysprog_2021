@@ -35,3 +35,4 @@ enum NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b,
 enum NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2);
 int PrintComplexNum(struct compl_num* number);
 int PrintResult(enum NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* x2);
+int ScanCheck(int n_needed, int n_scanned);
