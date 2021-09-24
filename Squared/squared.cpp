@@ -237,6 +237,7 @@ int ScanCheck(int n_needed, int n_scanned) {
 
 // Defining Unit Test function
 
+int CompareComplexNumbers(struct compl_num* cn1, struct compl_num* cn2)
 int UnitTest(char path[]) {
     FILE *tests;
     tests = fopen(path, "r");
