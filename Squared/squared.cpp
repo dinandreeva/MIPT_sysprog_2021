@@ -236,35 +236,60 @@ int ScanCheck(int n_needed, int n_scanned) {
 }
 
 // Defining Unit Test function
+enum TEST_RESULTS TestOneRoot (enum STATUS status_test, struct compl_num* cn1, struct compl_num* cn2) {
 
-int CheckRoots ()
-enum TEST_RESULTS CompareComplexRoots (struct compl_num* cn, struct compl_num* cn_test) {
     enum TEST_RESULTS result = ERROR_STATUS;
+    ScanCheck(1, fscanf(tests, "%lg", &(x1_test.real)));
+    if ((x1.real == x1_test.real)) {
+        result = PASSED;
+    } else {
+        result = NOT_PASSED;
+    }
+}
+
+enum TEST_RESULTS TestTwoRoots (enum STATUS status_test, struct compl_num* x1, struct compl_num* x2) {
+    enum TEST_RESULTS result = ERROR;
+
+    struct compl_num x1_test = {NAN; NAN};
+    struct compl_num x2_test = {NAN; NAN};
 
     // it is always 2 roots
-    if (cn->status == cn_test->status) {
-        switch(cn->status) {
+    if ((x1->status == status_test) && (x2->status == status_test) {
+        switch(status_test) {
             case REAL:
-                if (cn->real == cn_test->real) {
+                ScanCheck(2, fscanf(tests, "%lg %lg", &(x1.real), &(x2.real));
+                if ((x1->real == x1_test->real) && (x2->real == x2_test->real) {
                     result = PASSED;
-                }
+                } else {
+                    resilt = NOT_PASSED;
+                    }
+                break;
 
             case IMAGINARY:
-                if (cn->im == cn_test->im) {
+                ScanCheck(2, fscanf(tests, "%lgi %lgi", &(x1.im), &(x2.im)));
+                if ((x1->im == x1_test->im) && (x2->im == x2_test->im) {
                     result = PASSED;
-                }
+                } else {
+                    result = NOT_PASSED;
+                    }
+                break;
 
             case COMPLEX:
-                if ((cn->im == cn_test->im) && (cn->real == cn_test->real)) {
+                ScanCheck(4, fscanf(tests, "%lg + %lgi %lg + %lgi", &(x1.real), &(x1.im), &(x2.real), &(x2.im)));
+
+                if ((x1->real == x1_test->real) && (x2->real == x2_test->real) && (x1->im == x1_test->im) && (x2->im == x2_test->im)) {
                     result = PASSED;
+                } else {
+                    result = NOT_PASSED;
                 }
 
             default:
-                result = NOT_PASSED;
+                result = ERROR;
         }
         return result;
     }
 }
+
 int UnitTest (char path[]) {
     enum TEST_RESULTS result = ERROR;
 
@@ -282,8 +307,6 @@ int UnitTest (char path[]) {
         struct exp_data data_a = {NAN, NAN};
         struct exp_data data_b = {NAN, NAN};
         struct exp_data data_c = {NAN, NAN};
-        struct compl_num x1_test = {ERROR_STATUS, NAN, NAN};
-        struct compl_num x2_test = {ERROR_STATUS, NAN, NAN};
         struct compl_num x1 = {ERROR_STATUS, NAN, NAN};
         struct compl_num x2 = {ERROR_STATUS, NAN, NAN};
 
@@ -296,41 +319,31 @@ int UnitTest (char path[]) {
             ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
             ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
 
-            // checking root number to read roots
-            switch (n_roots_test) {
-                case INF_ROOTS:
-                case NO_ROOTS:
-                    enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
-                    if ((n_roots == n_roots_test)) {
-                        result = PASSED;
-                    } else {
-                        result = NOT_PASSED;
-                    }
-                    break;
-
-                case ONE_ROOT:
-                    if ((n_roots == n_roots_test)) {
-                        ScanCheck(1, fscanf(tests, "%lg", &(x1_test.real)));
-                        if ((x1.real == x1_test.real)) {
-                            result = PASSED;
-                        } else {
-                            result = NOT_PASSED;
-                        }
-                    } else {
-                        result = NOT_PASSED;
-                    }
-                    break;
-
-                case TWO_ROOTS:
-                    ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real));
-                    x1_test->im = 0; // won't be used
-                    x2_test->im = 0;
-                    x1_test->status = REAL;
-                    x2_test->status = REAL;
-                }
-            }
-
             enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
+
+            if ((n_roots == n_roots_test)) {
+
+                if ((n_roots_test == INF_ROOTS) && (n_roots_test == NO_ROOTS) {
+                    result = PASSED;
+                } else {
+                    switch (n_roots_test) {
+                        case ONE_ROOT:
+                            result = TestOneRoot()
+                            break;
+
+                        case TWO_ROOTS:
+                            result = TestTwoRoots()
+                            break;
+
+                        default:
+                            result = ERROR;
+                   }
+        
+                    
+                        }
+
+            // checking root number to read roots
+           enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
             if (n_roots != n_roots_test) {
                 printf ("Wrong number of roots.");
                 return -1;
