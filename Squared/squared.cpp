@@ -244,27 +244,50 @@ int UnitTest(char path[]) {
         printf("Cannot open file with tests.\n");
         return 0;
     } else {
-        int test_results[100];
-
-        struct exp_data data_a;
-        struct exp_data data_b;
-        struct exp_data data_c;
-
-        struct compl_num x1;
-        struct compl_num x2;
-
         int n_tests;
-
-        int n_roots;
-        char root_type;
-
         ScanCheck(1, fscanf(tests, "%d", &n_tests));
+
+        int test_results[n_tests];
+
+        struct exp_data data_a = {NAN, NAN};
+        struct exp_data data_b = {NAN, NAN};
+        struct exp_data data_c = {NAN, NAN};
+        struct compl_num x1_test = {ERROR_STATUS, NAN, NAN};
+        struct compl_num x2_test = {ERROR_STATUS, NAN, NAN};
+        struct compl_num x1 = {ERROR_STATUS, NAN, NAN};
+        struct compl_num x2 = {ERROR_STATUS, NAN, NAN};
+
+        enum NUM_ROOTS n_roots_test = ERROR_ROOTS;
+        char root_type = "";
 
         for (int i = 0; i < n_tests; ++i) {
             ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
             ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
-            ScanCheck(2, fscanf(tests, "%d %c", &n_roots, &root_type));
+            ScanCheck(2, fscanf(tests, "%d %c", &n_roots_test, &root_type));
             // checking roots
+            if (n_roots_test == 2) {
+                switch(*root_type) {
+                    case "r":
+                        ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real));
+                        x1_test->im = 0; // won't be used
+                        x2_test->im = 0;
+                        x1_test->status = REAL;
+                        x2_test->status = REAL;
+                }
+            }
+
+            enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
+            if (n_roots != n_roots_test) {
+                printf ("Wrong number of roots.");
+                return -1;
+            } else {
+                if (n_roots )
+                if (x1->status != x1_test->status) {
+                    printf ("Wrong status of roots.")
+                    return -1;
+                } else {
+                    if (x1-)
+            }
         }
     }
     return 0;
