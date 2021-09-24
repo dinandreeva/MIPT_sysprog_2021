@@ -266,6 +266,8 @@ enum TEST_RESULTS CompareComplexRoots (struct compl_num* cn, struct compl_num* c
     }
 }
 int UnitTest (char path[]) {
+    enum TEST_RESULTS result = ERROR;
+
     FILE *tests;
     tests = fopen(path, "r");
     if (tests == NULL) {
@@ -289,19 +291,42 @@ int UnitTest (char path[]) {
         char root_type = "";
 
         for (int i = 0; i < n_tests; ++i) {
+            // Reading input and number of roots
             ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
             ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
-            ScanCheck(2, fscanf(tests, "%d %c", &n_roots_test));
+            ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
 
-            // checking roots
-            switch(n_roots_test) {
-                case 
-            if (n_roots_test == 2) {
-                        ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real));
-                        x1_test->im = 0; // won't be used
-                        x2_test->im = 0;
-                        x1_test->status = REAL;
-                        x2_test->status = REAL;
+            // checking root number to read roots
+            switch (n_roots_test) {
+                case INF_ROOTS:
+                case NO_ROOTS:
+                    enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
+                    if ((n_roots == n_roots_test)) {
+                        result = PASSED;
+                    } else {
+                        result = NOT_PASSED;
+                    }
+                    break;
+
+                case ONE_ROOT:
+                    if ((n_roots == n_roots_test)) {
+                        ScanCheck(1, fscanf(tests, "%lg", &(x1_test.real)));
+                        if ((x1.real == x1_test.real)) {
+                            result = PASSED;
+                        } else {
+                            result = NOT_PASSED;
+                        }
+                    } else {
+                        result = NOT_PASSED;
+                    }
+                    break;
+
+                case TWO_ROOTS:
+                    ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real));
+                    x1_test->im = 0; // won't be used
+                    x2_test->im = 0;
+                    x1_test->status = REAL;
+                    x2_test->status = REAL;
                 }
             }
 
