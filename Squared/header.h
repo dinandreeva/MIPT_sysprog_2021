@@ -24,6 +24,13 @@ enum STATUS {
     ERROR_STATUS = -10
 };
 
+// Defining enum for test
+enum TEST_RESULTS {
+    PASSED = 0,
+    NOT_PASSED = 1,
+    ERROR = -1
+};
+
 struct exp_data;
 struct compl_num;
 

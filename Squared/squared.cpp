@@ -237,8 +237,35 @@ int ScanCheck(int n_needed, int n_scanned) {
 
 // Defining Unit Test function
 
-int CompareComplexNumbers(struct compl_num* cn1, struct compl_num* cn2)
-int UnitTest(char path[]) {
+int CheckRoots ()
+enum TEST_RESULTS CompareComplexRoots (struct compl_num* cn, struct compl_num* cn_test) {
+    enum TEST_RESULTS result = ERROR_STATUS;
+
+    // it is always 2 roots
+    if (cn->status == cn_test->status) {
+        switch(cn->status) {
+            case REAL:
+                if (cn->real == cn_test->real) {
+                    result = PASSED;
+                }
+
+            case IMAGINARY:
+                if (cn->im == cn_test->im) {
+                    result = PASSED;
+                }
+
+            case COMPLEX:
+                if ((cn->im == cn_test->im) && (cn->real == cn_test->real)) {
+                    result = PASSED;
+                }
+
+            default:
+                result = NOT_PASSED;
+        }
+        return result;
+    }
+}
+int UnitTest (char path[]) {
     FILE *tests;
     tests = fopen(path, "r");
     if (tests == NULL) {
@@ -248,7 +275,7 @@ int UnitTest(char path[]) {
         int n_tests;
         ScanCheck(1, fscanf(tests, "%d", &n_tests));
 
-        int test_results[n_tests];
+        enum TEST_RESULTS test_results[n_tests];
 
         struct exp_data data_a = {NAN, NAN};
         struct exp_data data_b = {NAN, NAN};
@@ -264,11 +291,12 @@ int UnitTest(char path[]) {
         for (int i = 0; i < n_tests; ++i) {
             ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
             ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
-            ScanCheck(2, fscanf(tests, "%d %c", &n_roots_test, &root_type));
+            ScanCheck(2, fscanf(tests, "%d %c", &n_roots_test));
+
             // checking roots
+            switch(n_roots_test) {
+                case 
             if (n_roots_test == 2) {
-                switch(*root_type) {
-                    case "r":
                         ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real));
                         x1_test->im = 0; // won't be used
                         x2_test->im = 0;
