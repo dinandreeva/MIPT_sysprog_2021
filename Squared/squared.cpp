@@ -298,64 +298,51 @@ int UnitTest (char path[]) {
     if (tests == NULL) {
         printf("Cannot open file with tests.\n");
         return 0;
-    } else {
-        int n_tests;
-        ScanCheck(1, fscanf(tests, "%d", &n_tests));
-
-        enum TEST_RESULTS test_results[n_tests];
-
-        struct exp_data data_a = {NAN, NAN};
-        struct exp_data data_b = {NAN, NAN};
-        struct exp_data data_c = {NAN, NAN};
-        struct compl_num x1 = {ERROR_STATUS, NAN, NAN};
-        struct compl_num x2 = {ERROR_STATUS, NAN, NAN};
-
-        enum NUM_ROOTS n_roots_test = ERROR_ROOTS;
-        char root_type = "";
-
-        for (int i = 0; i < n_tests; ++i) {
-            // Reading input and number of roots
-            ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
-            ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
-            ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
-
-            enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
-
-            if ((n_roots == n_roots_test)) {
-
-                if ((n_roots_test == INF_ROOTS) && (n_roots_test == NO_ROOTS) {
-                    result = PASSED;
-                } else {
-                    switch (n_roots_test) {
-                        case ONE_ROOT:
-                            result = TestOneRoot()
-                            break;
-
-                        case TWO_ROOTS:
-                            result = TestTwoRoots()
-                            break;
-
-                        default:
-                            result = ERROR;
-                   }
-        
-                    
-                        }
-
-            // checking root number to read roots
-           enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
-            if (n_roots != n_roots_test) {
-                printf ("Wrong number of roots.");
-                return -1;
-            } else {
-                if (n_roots )
-                if (x1->status != x1_test->status) {
-                    printf ("Wrong status of roots.")
-                    return -1;
-                } else {
-                    if (x1-)
-            }
-        }
     }
+    int n_tests;
+    ScanCheck(1, fscanf(tests, "%d", &n_tests));
+
+    enum TEST_RESULTS test_results[n_tests];
+
+    struct exp_data data_a = {NAN, NAN};
+    struct exp_data data_b = {NAN, NAN};
+    struct exp_data data_c = {NAN, NAN};
+    struct compl_num x1 = {ERROR_STATUS, NAN, NAN};
+    struct compl_num x2 = {ERROR_STATUS, NAN, NAN};
+
+    enum NUM_ROOTS n_roots_test = ERROR_ROOTS;
+    char root_type = "";
+
+    for (int i = 0; i < n_tests; ++i) {
+        // Reading input and number of roots
+        ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
+        ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
+        ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
+
+        enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
+
+        if ((n_roots == n_roots_test)) {
+
+            if ((n_roots_test == INF_ROOTS) && (n_roots_test == NO_ROOTS)) {
+                result = PASSED;
+            } else {
+                switch (n_roots_test) {
+                    case ONE_ROOT:
+                        result = TestOneRoot()
+                        break;
+
+                    case TWO_ROOTS:
+                        result = TestTwoRoots()
+                        break;
+
+                    default:
+                        result = ERROR;
+               }
+            }
+        } else {
+            printf ("Wrong number of roots.");
+            return -1;
+        }
     return 0;
+    }
 }
