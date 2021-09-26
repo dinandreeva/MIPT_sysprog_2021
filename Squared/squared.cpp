@@ -3,16 +3,14 @@
 #include <assert.h>
 #include "header.h"
 
-// Defining struct for experimental data with error margins
+// Определяем структуры для экспериментальных данных
 struct exp_data {
     double value;
     double sigma;
 };
 
 
-// Defining complex number
-
-// Defining complex number structure
+// Определяем структуру для комплексных чисел
 struct compl_num {
     STATUS status;
     double real;
@@ -21,11 +19,11 @@ struct compl_num {
 
 
 int main() {
-    UnitTest("./Squared/squared_tests.txt");
+    printf("Code for passing all tests: %d\n", UnitTest("./Squared/squared_tests.txt", 5));
     printf("Solve square equation\n"
            "Input a, b, c:\n");
 
-    // Initializing variables
+    // Инициализация переменных
     struct exp_data data_a = {NAN, NAN};
     struct exp_data data_b = {NAN, NAN};
     struct exp_data data_c = {NAN, NAN};
@@ -44,9 +42,9 @@ int main() {
     return 0;
 }
 
-// Defining functions
+// Определение функций
 
-// Functions for error calcucation
+// Функции для подсчёта погрешностей
 double CalcErrorBDividedBy2A(struct exp_data* a, struct exp_data* b) {
     // printf("Error -B/2a: %lg\n", sqrt(pow(b->sigma, 2) + pow(b->value * a->sigma / a->value, 2)) / (2 * a->value));
     return sqrt(pow(b->sigma, 2) + pow(b->value * a->sigma / a->value, 2)) / (2 * a->value);
@@ -58,16 +56,26 @@ double CalcErrorD(struct exp_data* a, struct exp_data* b, struct exp_data* c) {
 }
 
 
-// Function for equality taking in mind error
+// Функция для неточного приравнивания
 int AlmostEquals(double val1, double val2, double sigma) {
     // printf("Almost equals: %d\n", (val1 + sigma >= val2) && (val1 - sigma <= val2));
     return (val1 + sigma >= val2) && (val1 - sigma <= val2);
 }
 
+int EqualsTillN(double val1, double val2, int n) {
+    double margin = 5 * pow(10, -n);
+    return (val1 + margin >= val2) && (val1 - margin <- val2);
+}
 
-// Defining functions for solving equation
 
-// Function for solving linear equation
+int EqualsComplexTillN(struct compl_num* cn1, struct compl_num* cn2, int n) {
+    return (EqualsTillN(cn1->im, cn2->im, n) && (EqualsTillN(cn1->real, cn2->real, n)))
+}
+
+
+// Функции для решения квадратного уравнения
+
+// Функция для решения линейного уравнения
 NUM_ROOTS SolveLinear(struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x) {
     NUM_ROOTS n_roots = ERROR_ROOTS;
     double b = data_b->value;
@@ -94,16 +102,16 @@ NUM_ROOTS SolveLinear(struct exp_data* data_b, struct exp_data* data_c, struct c
     return n_roots;
 }
 
-// Function for finding square roots
+// Функция для нахождения корней квадратного уравнения
 NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2) {
-    // a != 0 guaranteed from parent function
+    // a != 0 гарантировано
     NUM_ROOTS n_roots = ERROR_ROOTS;
 
     double a = data_a->value;
     double b = data_b->value;
     double c = data_c->value;
 
-    // Calculating discriminant
+    // Вычисление дискриминанта
     double d = pow(b, 2) - 4 * a * c;
     if (AlmostEquals(d, 0, CalcErrorD(data_a, data_b, data_c))) {
         n_roots = ONE_ROOT;
@@ -119,7 +127,7 @@ NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, stru
             x1->im = 0;
             x2->real = - b - sqrt_d / (2 * a);
             x1->im = 0;
-        } else {  // Complex roots
+        } else {  // Комплексные корни
             double sqrt_d = sqrt(-d);
 
             if (AlmostEquals(- b / (2 * a), 0, CalcErrorBDividedBy2A(data_a, data_b))) {
@@ -137,9 +145,10 @@ NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, stru
     return n_roots;
 }
 
-// Function for solving square equation
+// Функции для решения квадратного уравнения
 NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2) {
-    // checking the inputs
+
+    // Проверка входных данных
     assert(data_a != NULL);
     assert(data_b != NULL);
     assert(data_c != NULL);
@@ -163,9 +172,9 @@ NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct 
 }
 
 
-// Defining functions for printing
+// Определение функций для печати
 
-// Function for printing complex numbers
+// Функция для печати комплексных чисел
 int PrintComplexNum(struct compl_num* number) {
     switch(number->status) {
         case REAL:
@@ -185,7 +194,7 @@ int PrintComplexNum(struct compl_num* number) {
     return 0;
 }
 
-// Function for printing result
+// Функция для печати комплексного числа
 int PrintResult(NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* x2) {
     printf("Roots of the equation: ");
     switch(n_roots) {
@@ -234,17 +243,18 @@ int ScanCheck(int n_needed, int n_scanned) {
     }
 }
 
-// Defining Unit Test function
-TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1) {
+
+//Функции для юнит теста
+TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1, int N) {
 
     TEST_RESULTS result = TEST_ERROR;
-    struct compl_num x1_test = {ERROR_STATUS, NAN, NAN};
+    struct compl_num x1_test = {status_test, NAN, 0};
     ScanCheck(1, fscanf(tests, "%lg", &(x1_test.real)));
-    if ((status_test != x1->status) || (x1->status != REAL)) {
+    if ((x1_test.status != x1->status) || (x1->status != REAL)) {
         printf("Wrong root status.\n");
         return TEST_ERROR;
     }
-    if ((x1->real == x1_test.real)) {
+    if (EqualsTillN(x1->real, x1_test.real, N)) {
         result = PASSED;
     } else {
         result = NOT_PASSED;
@@ -252,57 +262,52 @@ TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1)
     return result;
 }
 
-TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1, struct compl_num* x2) {
+TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1, struct compl_num* x2, int N) {
     TEST_RESULTS result = TEST_ERROR;
 
-    struct compl_num x1_test = {ERROR_STATUS, NAN, NAN};
-    struct compl_num x2_test = {ERROR_STATUS, NAN, NAN};
+    struct compl_num x1_test = {status_test, NAN, NAN};
+    struct compl_num x2_test = {status_test, NAN, NAN};
 
-    // it is always 2 roots
-    if ((x1->status == status_test) && (x2->status == status_test)) {
+    // Всегда 2 корня
+    if ((x1->status == x1_test.status) && (x2->status == x2_test.status) {
         switch(status_test) {
             case REAL:
                 ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real)));
-                if ((x1->real == x1_test.real) && (x2->real == x2_test.real)) {
-                    result = PASSED;
-                } else {
-                    result = NOT_PASSED;
-                }
+                x1_test.im = x2_test.im = 0;
                 break;
 
             case IMAGINARY:
                 ScanCheck(2, fscanf(tests, "%lgi %lgi", &(x1_test.im), &(x2_test.im)));
-                if ((x1->im == x1_test.im) && (x2->im == x2_test.im)) {
-                    result = PASSED;
-                } else {
-                    result = NOT_PASSED;
-                    }
+                x1_test.real = x2_test.real = 0;
                 break;
 
             case COMPLEX:
                 ScanCheck(4, fscanf(tests, "%lg %lgi, %lg %lgi", &(x1_test.real), &(x1_test.im), &(x2_test.real), &(x2_test.im)));
                 printf("Read roots: %lg %lgi, %lg %lgi\n", x1_test.real, x1_test.im, x2_test.real, x2_test.im);
-
-                if ((x1->real == x1_test.real) && (x2->real == x2_test.real) && (x1->im == x1_test.im) && (x2->im == x2_test.im)) {
-                    result = PASSED;
-                } else {
-                    result = NOT_PASSED;
-                }
                 break;
-            // нет default, потому что он не должен ничего делать
+
+            default:
+                return TEST_ERROR;
+        }
+        if (EqualsComplexTillN(x1, &(x1_test), N) && EqualsComplexTillN(x2, &(x2_test)), N) {
+            result = PASSED;
+        } else {
+            result = NOT_PASSED;
         }
     }
     return result;
 }
 
-int UnitTest (char path[]) {
+
+int UnitTest (char path[], int N) {
     TEST_RESULTS result = TEST_ERROR;
+    TEST_RESULTS main_result = TEST_ERROR;
 
     FILE* tests = NULL;
     tests = fopen(path, "r");
     if (tests == NULL) {
         printf("Cannot open file with tests.\n");
-        return 0;
+        return TEST_ERROR;
     }
     int n_tests;
     ScanCheck(1, fscanf(tests, "%d", &n_tests));
@@ -320,8 +325,7 @@ int UnitTest (char path[]) {
 
     for (int i = 1; i <= n_tests; ++i) {
 
-
-        // Reading input and number of roots
+        // Чтение данных теста
         ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
         printf("values = %lg %lg %lg\n", data_a.value, data_b.value, data_c.value);
         ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
@@ -329,7 +333,7 @@ int UnitTest (char path[]) {
         ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
         printf("n_roots_test = %d\n", n_roots_test);
 
-        // Solving equation
+        // Решение уравнения
         NUM_ROOTS n_roots = SolveSquared(&data_a, &data_b, &data_c, &x1, &x2);
 
         if ((n_roots == n_roots_test)) {
@@ -341,21 +345,22 @@ int UnitTest (char path[]) {
 
                 switch (n_roots_test) {
                     case ONE_ROOT:
-                        result = TestOneRoot(tests, status_test, &x1);
+                        result = TestOneRoot(tests, status_test, &x1, N);
                         break;
 
                     case TWO_ROOTS:
-                        result = TestTwoRoots(tests, status_test, &x1, &x2);
+                        result = TestTwoRoots(tests, status_test, &x1, &x2, N);
                         break;
 
                     default:
                         printf("Wrong number of roots read in tests: %d.\n", n_roots_test);
-                        return -1;
+                        return TEST_ERROR;
                 }
             }
         } else {
             printf ("Wrong number of roots.\n");
-            result = TEST_ERROR;
+            result = NOT_PASSED;
+            main_result = NOT_PASSED;
         }
 
         printf("Test number %d: result code %d\n", i, result);
@@ -369,5 +374,21 @@ int UnitTest (char path[]) {
         n_roots_test = ERROR_ROOTS;
         status_test = ERROR_STATUS;
     }
-    return 0;
+    if (main_result != NOT_PASSED) {
+        result = PASSED;
+    }
+    switch(result) {
+        case PASSED:
+            printf("All tests passed successfully.\n");
+            return 0;
+        case NOT_PASSED:
+            printf("Failed.\n");
+            break;
+        case TEST_ERROR:
+            printf("There were errors during testing\n");
+            break;
+        default:
+            printf("Wrong main TEST_RESULT enum");
+    }
+    return -1;
 }
