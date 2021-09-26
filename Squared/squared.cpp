@@ -236,10 +236,14 @@ int ScanCheck(int n_needed, int n_scanned) {
 }
 
 // Defining Unit Test function
-enum TEST_RESULTS TestOneRoot (enum STATUS status_test, struct compl_num* cn1, struct compl_num* cn2) {
+enum TEST_RESULTS TestOneRoot (enum STATUS status_test, struct compl_num* x1, struct compl_num* x2) {
 
     enum TEST_RESULTS result = ERROR_STATUS;
     ScanCheck(1, fscanf(tests, "%lg", &(x1_test.real)));
+    if ((status_test != x1->status) || (x1->status != REAL)) {
+        printf("Wrong root status.");
+        return -1;
+    }
     if ((x1.real == x1_test.real)) {
         result = PASSED;
     } else {
@@ -311,6 +315,7 @@ int UnitTest (char path[]) {
     struct compl_num x2 = {ERROR_STATUS, NAN, NAN};
 
     enum NUM_ROOTS n_roots_test = ERROR_ROOTS;
+    enum STATUS status_test = ERROR_STATUS;
     char root_type = "";
 
     for (int i = 0; i < n_tests; ++i) {
@@ -318,6 +323,7 @@ int UnitTest (char path[]) {
         ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
         ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
         ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
+        ScanCheck(1, fscanf(tests, "%d", &status_test));
 
         enum NUM_ROOTS n_roots = SolveSquared(data_a, data_b, data_c, x1, x2);
 
