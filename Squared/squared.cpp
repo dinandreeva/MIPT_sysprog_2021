@@ -283,7 +283,7 @@ TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1
 
             case COMPLEX:
                 ScanCheck(4, fscanf(tests, "%lg %lgi, %lg %lgi", &(x1_test.real), &(x1_test.im), &(x2_test.real), &(x2_test.im)));
-                printf("Read roots: %lg %lgi, %lg %lgi\n", x1_test.real, x1_test.im, x2_test.real, x2_test.im);
+                // printf("Read roots: %lg %lgi, %lg %lgi\n", x1_test.real, x1_test.im, x2_test.real, x2_test.im);
                 break;
 
             default:
@@ -311,7 +311,7 @@ int UnitTest (char path[], int N) {
     }
     int n_tests;
     ScanCheck(1, fscanf(tests, "%d", &n_tests));
-    printf("n_tests = %d\n", n_tests);
+    // printf("n_tests = %d\n", n_tests);
 
     TEST_RESULTS test_results[n_tests];
     struct exp_data data_a = {NAN, NAN};
@@ -327,11 +327,11 @@ int UnitTest (char path[], int N) {
 
         // Чтение данных теста
         ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
-        printf("values = %lg %lg %lg\n", data_a.value, data_b.value, data_c.value);
+        // printf("values = %lg %lg %lg\n", data_a.value, data_b.value, data_c.value);
         ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
-        printf("margins = %lg %lg %lg\n", data_a.sigma, data_b.sigma, data_c.sigma);
+        // printf("margins = %lg %lg %lg\n", data_a.sigma, data_b.sigma, data_c.sigma);
         ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
-        printf("n_roots_test = %d\n", n_roots_test);
+        // printf("n_roots_test = %d\n", n_roots_test);
 
         // Решение уравнения
         NUM_ROOTS n_roots = SolveSquared(&data_a, &data_b, &data_c, &x1, &x2);
@@ -341,7 +341,7 @@ int UnitTest (char path[], int N) {
                 result = PASSED;
             } else {
                 ScanCheck(1, fscanf(tests, "%d", &status_test));
-                printf("status_test = %d\n", status_test);
+                // printf("status_test = %d\n", status_test);
 
                 switch (n_roots_test) {
                     case ONE_ROOT:
@@ -379,7 +379,7 @@ int UnitTest (char path[], int N) {
     }
     switch(result) {
         case PASSED:
-            printf("All tests passed successfully.\n");
+            printf("All tests passed successfully.\n\n");
             return 0;
         case NOT_PASSED:
             printf("Failed.\n");
