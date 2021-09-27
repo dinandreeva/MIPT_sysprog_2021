@@ -5,6 +5,13 @@
 #include <sys/stat.h>
 #include "header.h"
 
+typedef enum C_DETECT {
+    WHITESPACE = 0,
+    POEM = 1,
+    POEM_END = 2,
+    UNDEFINED = -1
+};
+
 int main () {
     ReadOnegin ("onegin.txt")
 }
@@ -18,7 +25,7 @@ FILE* ReadFile (char path[], FILE* data) {
 FILE* WriteToFile ()
 
 int CountLines (char* path[], int* max_length) {
-
+    
     return lines;
 }
 
@@ -28,16 +35,31 @@ int CleanOnegin (char raw_path[]) {
 
 
     char ch = "";
-    int lines = 1;  // last line counts
+    int n_lines = 0;
     int line_length = 1; // How to check if file is empty?
+    int max_lenth = 1;
+
+    CHAR_TYPE c_type = UNDEFINED;
+
     while ((ch = getc (raw_poem)) != EOF) {
+        switch (ch) {
+            case ' ':
+            case '\t':
+                if (c_type == POEM) {
+                    c
+                }
+                c_type = WHITESPACE;
+
+        }
+
+        // Подготовка к переходу на следующую строку
         ++line_length;
         if (ch == "\n") {
-            lines++;
-            line_length = 1; // \n also counts
-            if (*max_length < line_length) {
-                *max_length = line_length;
+            n_lines++;
+            if (max_length < line_length) {
+                max_length = line_length;
             }
+            line_length = 1; // \n also counts
         }
     }
 

@@ -422,6 +422,8 @@ int UnitTest (char path[], int N) {
 
         printf ("\n");
     }
+    fclose(tests);
+
     if (main_result == TEST_START_VALUE) {
         main_result = PASSED;
     }
