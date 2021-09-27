@@ -123,10 +123,9 @@ NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, stru
             double sqrt_d = sqrt(d);
 
             x1->status = x2->status = REAL;
-            x1->real = - b + sqrt_d / (2 * a);
-            x1->im = 0;
-            x2->real = - b - sqrt_d / (2 * a);
-            x1->im = 0;
+            x1->real = (- b + sqrt_d) / (2 * a);
+            x2->real = (- b - sqrt_d) / (2 * a);
+            x1->im = x2->im = 0;
         } else {  // Комплексные корни
             double sqrt_d = sqrt(-d);
 
@@ -142,6 +141,7 @@ NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, stru
             x2->im = -sqrt_d / (2 * a);
         }
     }
+    // printf("%d roots: %lg %lgi %lg %lgi\n", n_roots, x1->real, x1->im, x2->real, x2->im);
     return n_roots;
 }
 
@@ -285,8 +285,8 @@ TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1
                 break;
 
             case COMPLEX:
-                ScanCheck(4, fscanf(tests, "%lg %lgi, %lg %lgi", &(x1_test.real), &(x1_test.im), &(x2_test.real), &(x2_test.im)));
-                // printf("Read roots: %lg %lgi, %lg %lgi\n", x1_test.real, x1_test.im, x2_test.real, x2_test.im);
+                ScanCheck(4, fscanf(tests, "%lg %lgi %lg %lgi", &(x1_test.real), &(x1_test.im), &(x2_test.real), &(x2_test.im)));
+                // printf("Read roots: %lg %lgi %lg %lgi\n", x1_test.real, x1_test.im, x2_test.real, x2_test.im);
                 break;
 
             default:
@@ -382,6 +382,7 @@ int UnitTest (char path[], int N) {
                 break;
             case NOT_PASSED:
                 printf("Test failed.\n");
+                main_result = NOT_PASSED;
                 break;
 
             case TEST_N_ROOT_ERROR:
@@ -391,10 +392,14 @@ int UnitTest (char path[], int N) {
             case TEST_ERROR:
             case TEST_START_VALUE:
                 printf("Error %d: No calculations were done.\n", result);
+                main_result = TEST_ERROR;
                 break;
             default:
                 printf("Error %d: Unknown error!\n", result);
+                main_result = TEST_ERROR;
         }
+        // printf("Test result %d\n", result);
+        // printf("Main test result %d\n", main_result);
 
         exp_data data_a = {NAN, NAN};
         exp_data data_b = {NAN, NAN};
@@ -404,24 +409,28 @@ int UnitTest (char path[], int N) {
 
         n_roots_test = ERROR_ROOTS;
         status_test = ERROR_STATUS;
+        result = TEST_START_VALUE;
 
         printf("\n");
     }
     if (main_result == TEST_START_VALUE) {
-        result = PASSED;
+        main_result = PASSED;
     }
-    switch(result) {
+    switch(main_result) {
         case PASSED:
             printf("All tests passed successfully.\n\n");
             return 0;
         case NOT_PASSED:
-            printf("Test failed.\n");
+            printf("Tests failed.\n");
             break;
         case TEST_ERROR:
             printf("There were errors during testing\n");
             break;
+        case TEST_START_VALUE:
+            printf("Unchanged main result value!\n");
+            break;
         default:
-            printf("Wrong main TEST_RESULT enum");
+            printf("Wrong main TEST_RESULT enum\n");
     }
     return -1;
 }
