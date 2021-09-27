@@ -56,6 +56,23 @@ double CalcErrorD (struct exp_data* a, struct exp_data* b, struct exp_data* c) {
 }
 
 
+int AssertScan (int n_needed, int n_scanned) {
+    assert (n_needed == n_scanned);
+    return 0;
+    // if (n_needed <= 0) {
+        // printf ("You can't request to read zero arguments.\n");
+        // return -1;
+    // } else {
+        // if (n_scanned == n_needed) {
+            // return 0;
+        // } else {
+            // printf ("Number of read arguments is %d, not equal to number needed.\n", n_scanned);
+            // return -1;
+        // }
+    // }
+}
+
+
 // Функция для неточного приравнивания
 int AlmostEquals (double val1, double val2, double sigma) {
     // printf ("Almost equals: %d\n", (val1 + sigma >= val2) && (val1 - sigma <= val2));
@@ -63,6 +80,8 @@ int AlmostEquals (double val1, double val2, double sigma) {
 }
 
 int EqualsTillN (double val1, double val2, int n) {
+    assert(isfinite(n));
+    assert(n > 0);
     double margin = 5 * pow (10, -n);
     return (val1 + margin >= val2) && (val1 - margin <= val2);
 }
@@ -236,23 +255,6 @@ int PrintResult (NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* x2) 
     return 0;
 }
 
-int AssertScan (int n_needed, int n_scanned) {
-    assert (n_needed == n_scanned);
-    return 0;
-    // if (n_needed <= 0) {
-        // printf ("You can't request to read zero arguments.\n");
-        // return -1;
-    // } else {
-        // if (n_scanned == n_needed) {
-            // return 0;
-        // } else {
-            // printf ("Number of read arguments is %d, not equal to number needed.\n", n_scanned);
-            // return -1;
-        // }
-    // }
-}
-
-
 //Функции для юнит теста
 TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1, int N) {
 
@@ -311,7 +313,7 @@ TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1
 }
 
 
-int UnitTest (char path[], int N) {
+int UnitTest (const char* path, int N) {
     TEST_RESULTS result = TEST_START_VALUE;
     TEST_RESULTS main_result = TEST_START_VALUE;
 
@@ -335,6 +337,8 @@ int UnitTest (char path[], int N) {
     NUM_ROOTS n_roots_test = ERROR_ROOTS;
     STATUS status_test = ERROR_STATUS;
 
+    int temp = 0;  // для считывания в enum
+
     for (int i = 1; i <= n_tests; ++i) {
 
         printf ("Test number %d:\n", i);
@@ -345,7 +349,9 @@ int UnitTest (char path[], int N) {
         AssertScan (3, fscanf (tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
         // printf ("margins = %lg %lg %lg\n", data_a.sigma, data_b.sigma, data_c.sigma);
 
-        AssertScan (1, fscanf (tests, "%d", &n_roots_test));
+        AssertScan (1, fscanf (tests, "%d", &temp));
+        n_roots_test = (NUM_ROOTS)temp;
+        temp = 0;
         // printf ("n_roots_test = %d\n", n_roots_test);
 
 
@@ -356,7 +362,9 @@ int UnitTest (char path[], int N) {
             if ((n_roots_test == INF_ROOTS) || n_roots_test == NO_ROOTS) {  // если корни не числа, то тест пройден
                 result = PASSED;
             } else {
-                AssertScan (1, fscanf (tests, "%d", &status_test));  // если корни числа, вещественные они или нет
+                AssertScan (1, fscanf (tests, "%d", &temp));  // если корни числа, вещественные они или нет
+                status_test = (STATUS)temp;
+                temp = 0;
                 // printf ("status_test = %d\n", status_test);
 
                 switch (n_roots_test) {
