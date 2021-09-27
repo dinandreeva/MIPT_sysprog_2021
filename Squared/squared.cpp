@@ -64,7 +64,7 @@ int AlmostEquals(double val1, double val2, double sigma) {
 
 int EqualsTillN(double val1, double val2, int n) {
     double margin = 5 * pow(10, -n);
-    return (val1 + margin >= val2) && (val1 - margin <- val2);
+    return (val1 + margin >= val2) && (val1 - margin <= val2);
 }
 
 
@@ -165,9 +165,9 @@ NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct 
 
     if (AlmostEquals(data_a->value, 0, data_a->sigma)) {
         n_roots = SolveLinear(data_b, data_c, x1);
-    } else {	
+    } else {
         n_roots = FindSquareRoots(data_a, data_b, data_c, x1, x2);
-	}
+    }
     return n_roots;
 }
 
@@ -250,6 +250,7 @@ TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1,
     TEST_RESULTS result = TEST_ERROR;
     struct compl_num x1_test = {status_test, NAN, 0};
     ScanCheck(1, fscanf(tests, "%lg", &(x1_test.real)));
+    // printf("Read root: %lg\n", x1_test.real);
     if ((x1_test.status != x1->status) || (x1->status != REAL)) {
         printf("Wrong root status.\n");
         return TEST_ERROR;
@@ -273,11 +274,13 @@ TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1
         switch(status_test) {
             case REAL:
                 ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real)));
+                // printf("Read roots: %lg %lg\n", x1_test.real, x2_test.real);
                 x1_test.im = x2_test.im = 0;
                 break;
 
             case IMAGINARY:
                 ScanCheck(2, fscanf(tests, "%lgi %lgi", &(x1_test.im), &(x2_test.im)));
+                // printf("Read roots: %lgi %lgi\n", x1_test.im, x2_test.im);
                 x1_test.real = x2_test.real = 0;
                 break;
 
@@ -300,18 +303,18 @@ TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1
 
 
 int UnitTest (char path[], int N) {
-    TEST_RESULTS result = TEST_ERROR;
-    TEST_RESULTS main_result = TEST_ERROR;
+    TEST_RESULTS result = TEST_START_VALUE;
+    TEST_RESULTS main_result = TEST_START_VALUE;
 
     FILE* tests = NULL;
     tests = fopen(path, "r");
     if (tests == NULL) {
         printf("Cannot open file with tests.\n");
-        return TEST_ERROR;
+        return TEST_FILE_ERROR;
     }
     int n_tests;
     ScanCheck(1, fscanf(tests, "%d", &n_tests));
-    // printf("n_tests = %d\n", n_tests);
+    // printf("n_tests = %d\n\n", n_tests);
 
     TEST_RESULTS test_results[n_tests];
     struct exp_data data_a = {NAN, NAN};
@@ -325,36 +328,47 @@ int UnitTest (char path[], int N) {
 
     for (int i = 1; i <= n_tests; ++i) {
 
+        printf("Test number %d:\n", i);
         // Чтение данных теста
         ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
         // printf("values = %lg %lg %lg\n", data_a.value, data_b.value, data_c.value);
+
         ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
         // printf("margins = %lg %lg %lg\n", data_a.sigma, data_b.sigma, data_c.sigma);
+
         ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
         // printf("n_roots_test = %d\n", n_roots_test);
+
 
         // Решение уравнения
         NUM_ROOTS n_roots = SolveSquared(&data_a, &data_b, &data_c, &x1, &x2);
 
-        if ((n_roots == n_roots_test)) {
-            if ((n_roots_test == INF_ROOTS) || n_roots_test == NO_ROOTS) {
+        if ((n_roots == n_roots_test)) {  // если число корней правильное
+            if ((n_roots_test == INF_ROOTS) || n_roots_test == NO_ROOTS) {  // если корни не числа, то тест пройден
                 result = PASSED;
             } else {
-                ScanCheck(1, fscanf(tests, "%d", &status_test));
+                ScanCheck(1, fscanf(tests, "%d", &status_test));  // если корни числа, вещественные они или нет
                 // printf("status_test = %d\n", status_test);
 
                 switch (n_roots_test) {
                     case ONE_ROOT:
+                        // printf("Calculated roots: number of roots %d, root = %lg\n", n_roots, x1.real);
                         result = TestOneRoot(tests, status_test, &x1, N);
                         break;
 
                     case TWO_ROOTS:
                         result = TestTwoRoots(tests, status_test, &x1, &x2, N);
+
+                        // printf("Calculated roots: number of roots %d, ", n_roots);
+                        // PrintComplexNum(&x1);
+                        // printf(" ");
+                        // PrintComplexNum(&x2);
+                        // printf("\n");
                         break;
 
                     default:
-                        printf("Wrong number of roots read in tests: %d.\n", n_roots_test);
-                        return TEST_ERROR;
+                        result = TEST_N_ROOT_ERROR;
+                        main_result = TEST_ERROR;
                 }
             }
         } else {
@@ -362,8 +376,25 @@ int UnitTest (char path[], int N) {
             result = NOT_PASSED;
             main_result = NOT_PASSED;
         }
+        switch(result) {
+            case PASSED:
+                printf("Test passed.\n");
+                break;
+            case NOT_PASSED:
+                printf("Test failed.\n");
+                break;
 
-        printf("Test number %d: result code %d\n", i, result);
+            case TEST_N_ROOT_ERROR:
+                printf("Error %d: Invalid number of roots.\n", result);
+                return -1;  // Последует неправильное чтение следующих тестов
+
+            case TEST_ERROR:
+            case TEST_START_VALUE:
+                printf("Error %d: No calculations were done.\n", result);
+                break;
+            default:
+                printf("Error %d: Unknown error!\n", result);
+        }
 
         exp_data data_a = {NAN, NAN};
         exp_data data_b = {NAN, NAN};
@@ -373,8 +404,10 @@ int UnitTest (char path[], int N) {
 
         n_roots_test = ERROR_ROOTS;
         status_test = ERROR_STATUS;
+
+        printf("\n");
     }
-    if (main_result != NOT_PASSED) {
+    if (main_result == TEST_START_VALUE) {
         result = PASSED;
     }
     switch(result) {
@@ -382,7 +415,7 @@ int UnitTest (char path[], int N) {
             printf("All tests passed successfully.\n\n");
             return 0;
         case NOT_PASSED:
-            printf("Failed.\n");
+            printf("Test failed.\n");
             break;
         case TEST_ERROR:
             printf("There were errors during testing\n");

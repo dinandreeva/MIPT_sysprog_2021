@@ -28,7 +28,10 @@ typedef enum {
 typedef enum {
     PASSED = 0,
     NOT_PASSED = 1,
-    TEST_ERROR = -1
+    TEST_ERROR = -1,
+    TEST_N_ROOT_ERROR = -2,
+    TEST_FILE_ERROR = -3,
+    TEST_START_VALUE = 2
 } TEST_RESULTS;
 
 struct exp_data;
