@@ -30,11 +30,11 @@ int main() {
     struct compl_num x1 = {ERROR_STATUS, NAN, NAN};
     struct compl_num x2 = {ERROR_STATUS, NAN, NAN};
 
-    ScanCheck(3, scanf("%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
+    AssertScan(3, scanf("%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
 
     printf("Input error margins:\n");
 
-    ScanCheck(3, scanf("%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
+    AssertScan(3, scanf("%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
 
     NUM_ROOTS n_roots = SolveSquared(&data_a, &data_b, &data_c, &x1, &x2);
     PrintResult(n_roots, &x1, &x2);
@@ -78,10 +78,12 @@ int EqualsComplexTillN(struct compl_num* cn1, struct compl_num* cn2, int n) {
 // Функция для решения линейного уравнения
 NUM_ROOTS SolveLinear(struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x) {
     NUM_ROOTS n_roots = ERROR_ROOTS;
+
+    assert(isfinite(data_b->value));
+    assert(isfinite(data_c->value));
+
     double b = data_b->value;
     double c = data_c->value;
-    assert(isfinite(b));
-    assert(isfinite(c));
 
     assert(x != NULL);
 
@@ -147,6 +149,7 @@ NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, stru
 
 // Функции для решения квадратного уравнения
 NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2) {
+    // printf("Values: %lg %lg %lg, Sigmas: %lg %lg %lg\n", data_a->value, data_b->value, data_c->value, data_a->sigma, data_b->sigma, data_c->sigma);
 
     // Проверка входных данных
     assert(data_a != NULL);
@@ -156,6 +159,10 @@ NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct 
     assert(isfinite(data_a->value));
     assert(isfinite(data_b->value));
     assert(isfinite(data_c->value));
+
+    assert(isfinite(data_a->sigma));
+    assert(isfinite(data_b->sigma));
+    assert(isfinite(data_c->sigma));
 
     assert(x1 != NULL);
     assert(x2 != NULL);
@@ -229,18 +236,20 @@ int PrintResult(NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* x2) {
     return 0;
 }
 
-int ScanCheck(int n_needed, int n_scanned) {
-    if (n_needed <= 0) {
-        printf("You can't request to read zero arguments.\n");
-        return -1;
-    } else {
-        if (n_scanned == n_needed) {
-            return 0;
-        } else {
-            printf("Number of read arguments is %d, not equal to number needed.\n", n_scanned);
-            return -1;
-        }
-    }
+int AssertScan(int n_needed, int n_scanned) {
+    assert(n_needed == n_scanned);
+    return 0;
+    // if (n_needed <= 0) {
+        // printf("You can't request to read zero arguments.\n");
+        // return -1;
+    // } else {
+        // if (n_scanned == n_needed) {
+            // return 0;
+        // } else {
+            // printf("Number of read arguments is %d, not equal to number needed.\n", n_scanned);
+            // return -1;
+        // }
+    // }
 }
 
 
@@ -249,7 +258,7 @@ TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1,
 
     TEST_RESULTS result = TEST_ERROR;
     struct compl_num x1_test = {status_test, NAN, 0};
-    ScanCheck(1, fscanf(tests, "%lg", &(x1_test.real)));
+    AssertScan(1, fscanf(tests, "%lg", &(x1_test.real)));
     // printf("Read root: %lg\n", x1_test.real);
     if ((x1_test.status != x1->status) || (x1->status != REAL)) {
         printf("Wrong root status.\n");
@@ -273,19 +282,19 @@ TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1
     if ((x1->status == x1_test.status) && (x2->status == x2_test.status)) {
         switch(status_test) {
             case REAL:
-                ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real)));
+                AssertScan(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real)));
                 // printf("Read roots: %lg %lg\n", x1_test.real, x2_test.real);
                 x1_test.im = x2_test.im = 0;
                 break;
 
             case IMAGINARY:
-                ScanCheck(2, fscanf(tests, "%lgi %lgi", &(x1_test.im), &(x2_test.im)));
+                AssertScan(2, fscanf(tests, "%lgi %lgi", &(x1_test.im), &(x2_test.im)));
                 // printf("Read roots: %lgi %lgi\n", x1_test.im, x2_test.im);
                 x1_test.real = x2_test.real = 0;
                 break;
 
             case COMPLEX:
-                ScanCheck(4, fscanf(tests, "%lg %lgi %lg %lgi", &(x1_test.real), &(x1_test.im), &(x2_test.real), &(x2_test.im)));
+                AssertScan(4, fscanf(tests, "%lg %lgi %lg %lgi", &(x1_test.real), &(x1_test.im), &(x2_test.real), &(x2_test.im)));
                 // printf("Read roots: %lg %lgi %lg %lgi\n", x1_test.real, x1_test.im, x2_test.real, x2_test.im);
                 break;
 
@@ -313,7 +322,7 @@ int UnitTest (char path[], int N) {
         return TEST_FILE_ERROR;
     }
     int n_tests;
-    ScanCheck(1, fscanf(tests, "%d", &n_tests));
+    AssertScan(1, fscanf(tests, "%d", &n_tests));
     // printf("n_tests = %d\n\n", n_tests);
 
     TEST_RESULTS test_results[n_tests];
@@ -330,13 +339,13 @@ int UnitTest (char path[], int N) {
 
         printf("Test number %d:\n", i);
         // Чтение данных теста
-        ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
+        AssertScan(3, fscanf(tests, "%lg %lg %lg", &(data_a.value), &(data_b.value), &(data_c.value)));
         // printf("values = %lg %lg %lg\n", data_a.value, data_b.value, data_c.value);
 
-        ScanCheck(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
+        AssertScan(3, fscanf(tests, "%lg %lg %lg", &(data_a.sigma), &(data_b.sigma), &(data_c.sigma)));
         // printf("margins = %lg %lg %lg\n", data_a.sigma, data_b.sigma, data_c.sigma);
 
-        ScanCheck(1, fscanf(tests, "%d", &n_roots_test));
+        AssertScan(1, fscanf(tests, "%d", &n_roots_test));
         // printf("n_roots_test = %d\n", n_roots_test);
 
 
@@ -347,7 +356,7 @@ int UnitTest (char path[], int N) {
             if ((n_roots_test == INF_ROOTS) || n_roots_test == NO_ROOTS) {  // если корни не числа, то тест пройден
                 result = PASSED;
             } else {
-                ScanCheck(1, fscanf(tests, "%d", &status_test));  // если корни числа, вещественные они или нет
+                AssertScan(1, fscanf(tests, "%d", &status_test));  // если корни числа, вещественные они или нет
                 // printf("status_test = %d\n", status_test);
 
                 switch (n_roots_test) {

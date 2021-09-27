@@ -51,7 +51,7 @@ NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct 
 int PrintComplexNum(struct compl_num* number);
 int PrintResult(NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* x2);
 
-int ScanCheck(int n_needed, int n_scanned);
+int AssertScan(int n_needed, int n_scanned);
 
 // Функции для юнит тестов
 TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1, int N);
