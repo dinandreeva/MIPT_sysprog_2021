@@ -39,7 +39,7 @@ double CalcErrorD(struct exp_data* a, struct exp_data* b, struct exp_data* c);
 
 int AlmostEquals(double val1, double val2, double sigma);
 int EqualsTillN(double val1, double val2, int n);
-int EqualTill5(double val1, double val2);
+int EqualsComplexTillN(double val1, double val2);
 
 NUM_ROOTS SolveLinear(struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x);
 NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2);
@@ -51,6 +51,6 @@ int PrintResult(NUM_ROOTS n_roots, struct compl_num* x1, struct compl_num* x2);
 int ScanCheck(int n_needed, int n_scanned);
 
 // Функции для юнит тестов
-TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1);
-TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1, struct compl_num* x2);
-int UnitTest (char path[]);
+TEST_RESULTS TestOneRoot (FILE* tests, STATUS status_test, struct compl_num* x1, int N);
+TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1, struct compl_num* x2, int N);
+int UnitTest (char path[], int N);

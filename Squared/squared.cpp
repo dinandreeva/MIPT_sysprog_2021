@@ -19,7 +19,7 @@ struct compl_num {
 
 
 int main() {
-    printf("Code for passing all tests: %d\n", UnitTest("./Squared/squared_tests.txt", 5));
+    UnitTest("./Squared/squared_tests.txt", 5);
     printf("Solve square equation\n"
            "Input a, b, c:\n");
 
@@ -69,7 +69,7 @@ int EqualsTillN(double val1, double val2, int n) {
 
 
 int EqualsComplexTillN(struct compl_num* cn1, struct compl_num* cn2, int n) {
-    return (EqualsTillN(cn1->im, cn2->im, n) && (EqualsTillN(cn1->real, cn2->real, n)))
+    return (EqualsTillN(cn1->im, cn2->im, n) && (EqualsTillN(cn1->real, cn2->real, n)));
 }
 
 
@@ -269,7 +269,7 @@ TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1
     struct compl_num x2_test = {status_test, NAN, NAN};
 
     // Всегда 2 корня
-    if ((x1->status == x1_test.status) && (x2->status == x2_test.status) {
+    if ((x1->status == x1_test.status) && (x2->status == x2_test.status)) {
         switch(status_test) {
             case REAL:
                 ScanCheck(2, fscanf(tests, "%lg %lg", &(x1_test.real), &(x2_test.real)));
@@ -289,7 +289,7 @@ TEST_RESULTS TestTwoRoots (FILE* tests, STATUS status_test, struct compl_num* x1
             default:
                 return TEST_ERROR;
         }
-        if (EqualsComplexTillN(x1, &(x1_test), N) && EqualsComplexTillN(x2, &(x2_test)), N) {
+        if (EqualsComplexTillN(x1, &(x1_test), N) && EqualsComplexTillN(x2, &(x2_test), N)) {
             result = PASSED;
         } else {
             result = NOT_PASSED;
