@@ -20,7 +20,8 @@ struct compl_num {
 
 int main () {
     UnitTest ("./Squared/squared_tests.txt", 5);
-    printf ("Solve square equation\n"
+
+    printf ("Square equation solver 2021\n"
             "Input a, b, c:\n");
 
     // Инициализация переменных
@@ -82,7 +83,7 @@ int AlmostEquals (double val1, double val2, double sigma) {
 int EqualsTillN (double val1, double val2, int n) {
     assert(isfinite(n));
     assert(n > 0);
-    double margin = 5 * pow (10, -n);
+    double margin = 5 * pow (10, -(n+1));
     return (val1 + margin >= val2) && (val1 - margin <= val2);
 }
 
