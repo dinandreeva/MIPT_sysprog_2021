@@ -211,7 +211,12 @@ int PrintComplexNum (struct compl_num* number) {
             printf ("%lgi", number->im);
             break;
         case COMPLEX:
-            printf ("%lg + %lgi", number->real, number->im);
+            if (number->im >= 0) {
+                printf ("%lg +%lgi", number->real, number->im);
+            }
+            else {
+                printf ("%lg %lgi", number->real, number->im);
+            }
             break;
         default:
             printf ("Error in PrintComplexNum!\n"
