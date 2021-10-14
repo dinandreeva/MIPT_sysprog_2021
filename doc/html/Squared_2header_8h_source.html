@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Системное программирование: Исходный файл Squared/header.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Системное программирование
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3a5fe21e3b1f7242bdc5295512fb9872.html">Squared</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">header.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Squared_2header_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Определение enum&#39;ов</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">    8</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    INF_ROOTS = -1,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    NO_ROOTS  =  0,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    ONE_ROOT  =  1,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    TWO_ROOTS =  2,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    ERROR_ROOTS = -10</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;} <a class="code" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="Squared_2header_8h.html#a56e66b4847cedd4d0664171e62c17bbe">   22</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    D = 1,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    B_DIVIDE_2A = 0</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;} <a class="code" href="Squared_2header_8h.html#a56e66b4847cedd4d0664171e62c17bbe">MARGIN_TYPE</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">   33</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    REAL = 1,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    IMAGINARY = -1,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    COMPLEX = 0,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ERROR_STATUS = -10</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;} <a class="code" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">   46</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    PASSED = 0,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    NOT_PASSED = 1,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    TEST_ERROR = -1,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    TEST_N_ROOT_ERROR = -2,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    TEST_FILE_ERROR = -3,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    TEST_START_VALUE = 2</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <a class="code" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">struct </span><a class="code" href="structexp__data.html">exp_data</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">struct </span><a class="code" href="structcompl__num.html">compl_num</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">double</span> <a class="code" href="Squared_2header_8h.html#ac3e9c90b50102d3b0c49e28e7cb82dc1">CalcErrorBDividedBy2A</a>(<span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* a, <span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* b);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">double</span> <a class="code" href="Squared_2header_8h.html#a6dee4cd30d2fad66bf73d91897f37a66">CalcErrorD</a>(<span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* a, <span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* b, <span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* c);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">int</span> <a class="code" href="Squared_2header_8h.html#ae42adf9f5f20a034ab9c86696be28874">AssertScan</a>(<span class="keywordtype">int</span> n_needed, <span class="keywordtype">int</span> n_scanned);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">int</span> <a class="code" href="Squared_2header_8h.html#a1cc28507350650f10a43159fe39429d5">AlmostEquals</a>(<span class="keywordtype">double</span> val1, <span class="keywordtype">double</span> val2, <span class="keywordtype">double</span> sigma);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keywordtype">int</span> <a class="code" href="Squared_2header_8h.html#aab263e86be1b69ca180faca9a99003cd">EqualsTillN</a>(<span class="keywordtype">double</span> val1, <span class="keywordtype">double</span> val2, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">int</span> <a class="code" href="Squared_2header_8h.html#a22d9fb8daa2130a8ed06cb4a27a30d6d">EqualsComplexTillN</a> (<span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* cn1, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* cn2, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<a class="code" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> <a class="code" href="Squared_2header_8h.html#ab46bd83b6c88c5394b89166755ae483b">SolveLinear</a>(<span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* data_b, <span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* data_c, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<a class="code" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> <a class="code" href="Squared_2header_8h.html#acf94f937f9c9ae7de0942c8759e5d96d">FindSquareRoots</a>(<span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* data_a, <span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* data_b, <span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* data_c, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x1, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x2);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<a class="code" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> <a class="code" href="Squared_2header_8h.html#afa555cd99252c947e288617ca89371a0">SolveSquared</a>(<span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* data_a, <span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* data_b, <span class="keyword">struct</span> <a class="code" href="structexp__data.html">exp_data</a>* data_c, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x1, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x2);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">int</span> <a class="code" href="Squared_2header_8h.html#aadad363f7ccbb8debe7d5bac248b1cd4">PrintComplexNum</a>(<span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* number);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">int</span> <a class="code" href="Squared_2header_8h.html#a8fc4a2643e35d1a052d64c679ead9553">PrintResult</a>(<a class="code" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> n_roots, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x1, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x2);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">// Функции для юнит тестов</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"></span><a class="code" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a> <a class="code" href="Squared_2header_8h.html#a0b3ec0c48ed8fc891744f7784f9e2596">TestOneRoot</a> (FILE* tests, <a class="code" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a> status_test, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x1, <span class="keywordtype">int</span> N);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<a class="code" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a> <a class="code" href="Squared_2header_8h.html#af5bbfd2e89910dc71106242eba3dbff0">TestTwoRoots</a> (FILE* tests, <a class="code" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a> status_test, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x1, <span class="keyword">struct</span> <a class="code" href="structcompl__num.html">compl_num</a>* x2, <span class="keywordtype">int</span> N);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="keywordtype">int</span> <a class="code" href="Squared_2header_8h.html#acacfce6de488a8af5a3d306bf90bdddc">UnitTest</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* path, <span class="keywordtype">int</span> N);</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructexp__data_html"><div class="ttname"><a href="structexp__data.html">exp_data</a></div><div class="ttdef"><b>Definition:</b> squared.cpp:7</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_ab46bd83b6c88c5394b89166755ae483b"><div class="ttname"><a href="Squared_2header_8h.html#ab46bd83b6c88c5394b89166755ae483b">SolveLinear</a></div><div class="ttdeci">NUM_ROOTS SolveLinear(struct exp_data *data_b, struct exp_data *data_c, struct compl_num *x)</div><div class="ttdoc">Решатель линейного уравнения.</div><div class="ttdef"><b>Definition:</b> squared.cpp:98</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_ae42adf9f5f20a034ab9c86696be28874"><div class="ttname"><a href="Squared_2header_8h.html#ae42adf9f5f20a034ab9c86696be28874">AssertScan</a></div><div class="ttdeci">int AssertScan(int n_needed, int n_scanned)</div><div class="ttdoc">Ассёрт на количество считанных аргументов из стандартного ввода.</div><div class="ttdef"><b>Definition:</b> squared.cpp:59</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a22d9fb8daa2130a8ed06cb4a27a30d6d"><div class="ttname"><a href="Squared_2header_8h.html#a22d9fb8daa2130a8ed06cb4a27a30d6d">EqualsComplexTillN</a></div><div class="ttdeci">int EqualsComplexTillN(struct compl_num *cn1, struct compl_num *cn2, int n)</div><div class="ttdoc">Уравнивание комплексных чисел с округлением до разряда N.</div><div class="ttdef"><b>Definition:</b> squared.cpp:90</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_aab263e86be1b69ca180faca9a99003cd"><div class="ttname"><a href="Squared_2header_8h.html#aab263e86be1b69ca180faca9a99003cd">EqualsTillN</a></div><div class="ttdeci">int EqualsTillN(double val1, double val2, int n)</div><div class="ttdoc">Уравнивание с округлением до разряда N.</div><div class="ttdef"><b>Definition:</b> squared.cpp:82</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_aadad363f7ccbb8debe7d5bac248b1cd4"><div class="ttname"><a href="Squared_2header_8h.html#aadad363f7ccbb8debe7d5bac248b1cd4">PrintComplexNum</a></div><div class="ttdeci">int PrintComplexNum(struct compl_num *number)</div><div class="ttdoc">Печать комплексного числа.</div><div class="ttdef"><b>Definition:</b> squared.cpp:204</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_af5bbfd2e89910dc71106242eba3dbff0"><div class="ttname"><a href="Squared_2header_8h.html#af5bbfd2e89910dc71106242eba3dbff0">TestTwoRoots</a></div><div class="ttdeci">TEST_RESULTS TestTwoRoots(FILE *tests, STATUS status_test, struct compl_num *x1, struct compl_num *x2, int N)</div><div class="ttdoc">Сравнение решения строго квадратного уравнения с ответом теста.</div><div class="ttdef"><b>Definition:</b> squared.cpp:277</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a0b3ec0c48ed8fc891744f7784f9e2596"><div class="ttname"><a href="Squared_2header_8h.html#a0b3ec0c48ed8fc891744f7784f9e2596">TestOneRoot</a></div><div class="ttdeci">TEST_RESULTS TestOneRoot(FILE *tests, STATUS status_test, struct compl_num *x1, int N)</div><div class="ttdoc">Сравнение решения линейного уравнения с ответом теста.</div><div class="ttdef"><b>Definition:</b> squared.cpp:259</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_ac3e9c90b50102d3b0c49e28e7cb82dc1"><div class="ttname"><a href="Squared_2header_8h.html#ac3e9c90b50102d3b0c49e28e7cb82dc1">CalcErrorBDividedBy2A</a></div><div class="ttdeci">double CalcErrorBDividedBy2A(struct exp_data *a, struct exp_data *b)</div><div class="ttdoc">Вычисление погрешности действительной части корней квадратного уравнения.</div><div class="ttdef"><b>Definition:</b> squared.cpp:48</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_acacfce6de488a8af5a3d306bf90bdddc"><div class="ttname"><a href="Squared_2header_8h.html#acacfce6de488a8af5a3d306bf90bdddc">UnitTest</a></div><div class="ttdeci">int UnitTest(const char *path, int N)</div><div class="ttdoc">Юнит-тестирование</div><div class="ttdef"><b>Definition:</b> squared.cpp:316</div></div>
+<div class="ttc" id="astructcompl__num_html"><div class="ttname"><a href="structcompl__num.html">compl_num</a></div><div class="ttdef"><b>Definition:</b> squared.cpp:14</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_afa555cd99252c947e288617ca89371a0"><div class="ttname"><a href="Squared_2header_8h.html#afa555cd99252c947e288617ca89371a0">SolveSquared</a></div><div class="ttdeci">NUM_ROOTS SolveSquared(struct exp_data *data_a, struct exp_data *data_b, struct exp_data *data_c, struct compl_num *x1, struct compl_num *x2)</div><div class="ttdoc">Решатель строго квадратного уравнения.</div><div class="ttdef"><b>Definition:</b> squared.cpp:170</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a9b01e311f56b71339a819d0522e9b9d3"><div class="ttname"><a href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a></div><div class="ttdeci">NUM_ROOTS</div><div class="ttdoc">enum для числа корней.</div><div class="ttdef"><b>Definition:</b> header.h:8</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a6d4abd1a17f1982cbf800ef2ce478ec6"><div class="ttname"><a href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a></div><div class="ttdeci">TEST_RESULTS</div><div class="ttdoc">enum для результата юнит-тестирования.</div><div class="ttdef"><b>Definition:</b> header.h:46</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a8fc4a2643e35d1a052d64c679ead9553"><div class="ttname"><a href="Squared_2header_8h.html#a8fc4a2643e35d1a052d64c679ead9553">PrintResult</a></div><div class="ttdeci">int PrintResult(NUM_ROOTS n_roots, struct compl_num *x1, struct compl_num *x2)</div><div class="ttdoc">Печать ответа.</div><div class="ttdef"><b>Definition:</b> squared.cpp:224</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a32c27cc471df37f4fc818d65de0a56c4"><div class="ttname"><a href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a></div><div class="ttdeci">STATUS</div><div class="ttdoc">enum для типа комплексного числа.</div><div class="ttdef"><b>Definition:</b> header.h:33</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_acf94f937f9c9ae7de0942c8759e5d96d"><div class="ttname"><a href="Squared_2header_8h.html#acf94f937f9c9ae7de0942c8759e5d96d">FindSquareRoots</a></div><div class="ttdeci">NUM_ROOTS FindSquareRoots(struct exp_data *data_a, struct exp_data *data_b, struct exp_data *data_c, struct compl_num *x1, struct compl_num *x2)</div><div class="ttdoc">Вычислитель корней квадратного уравнения.</div><div class="ttdef"><b>Definition:</b> squared.cpp:127</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a1cc28507350650f10a43159fe39429d5"><div class="ttname"><a href="Squared_2header_8h.html#a1cc28507350650f10a43159fe39429d5">AlmostEquals</a></div><div class="ttdeci">int AlmostEquals(double val1, double val2, double sigma)</div><div class="ttdoc">Приблизительное равно.</div><div class="ttdef"><b>Definition:</b> squared.cpp:77</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a56e66b4847cedd4d0664171e62c17bbe"><div class="ttname"><a href="Squared_2header_8h.html#a56e66b4847cedd4d0664171e62c17bbe">MARGIN_TYPE</a></div><div class="ttdeci">MARGIN_TYPE</div><div class="ttdoc">enum для типа погрешности.</div><div class="ttdef"><b>Definition:</b> header.h:22</div></div>
+<div class="ttc" id="aSquared_2header_8h_html_a6dee4cd30d2fad66bf73d91897f37a66"><div class="ttname"><a href="Squared_2header_8h.html#a6dee4cd30d2fad66bf73d91897f37a66">CalcErrorD</a></div><div class="ttdeci">double CalcErrorD(struct exp_data *a, struct exp_data *b, struct exp_data *c)</div><div class="ttdoc">Вычисление погрешности дискриминанта.</div><div class="ttdef"><b>Definition:</b> squared.cpp:53</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

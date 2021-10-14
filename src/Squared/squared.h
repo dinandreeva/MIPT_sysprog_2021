@@ -54,11 +54,18 @@ typedef enum {
 
 
 /// \brief Cтруктура для совместного хранения величины и её погрешности.
-struct exp_data;
+struct exp_data {
+    double value;
+    double sigma;
+};
 
 
 /// \brief Структура для хранения данных комплексных чисел.
-struct compl_num;
+struct compl_num {
+    STATUS status;
+    double real;
+    double im;
+};
 
 
 /*! \brief Вычисление погрешности действительной части корней квадратного уравнения.

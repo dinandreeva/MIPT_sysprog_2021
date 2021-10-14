@@ -1,0 +1,385 @@
+\hypertarget{Squared_2header_8h}{}\doxysection{Файл Squared/header.h}
+\label{Squared_2header_8h}\index{Squared/header.h@{Squared/header.h}}
+
+
+Заголовочный файл с документацией по квадратному уравнению.  
+
+
+\doxysubsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}\label{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}} 
+enum \mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}} \{ \newline
+{\bfseries I\+N\+F\+\_\+\+R\+O\+O\+TS} = -\/1, 
+{\bfseries N\+O\+\_\+\+R\+O\+O\+TS} = 0, 
+{\bfseries O\+N\+E\+\_\+\+R\+O\+OT} = 1, 
+{\bfseries T\+W\+O\+\_\+\+R\+O\+O\+TS} = 2, 
+\newline
+{\bfseries E\+R\+R\+O\+R\+\_\+\+R\+O\+O\+TS} = -\/10
+ \}
+\begin{DoxyCompactList}\small\item\em enum для числа корней. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{Squared_2header_8h_a56e66b4847cedd4d0664171e62c17bbe}{M\+A\+R\+G\+I\+N\+\_\+\+T\+Y\+PE}} \{ {\bfseries D} = 1, 
+{\bfseries B\+\_\+\+D\+I\+V\+I\+D\+E\+\_\+2A} = 0
+ \}
+\begin{DoxyCompactList}\small\item\em enum для типа погрешности. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{Squared_2header_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US}} \{ {\bfseries R\+E\+AL} = 1, 
+{\bfseries I\+M\+A\+G\+I\+N\+A\+RY} = -\/1, 
+{\bfseries C\+O\+M\+P\+L\+EX} = 0, 
+{\bfseries E\+R\+R\+O\+R\+\_\+\+S\+T\+A\+T\+US} = -\/10
+ \}
+\begin{DoxyCompactList}\small\item\em enum для типа комплексного числа. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{Squared_2header_8h_a6d4abd1a17f1982cbf800ef2ce478ec6}{T\+E\+S\+T\+\_\+\+R\+E\+S\+U\+L\+TS}} \{ \newline
+{\bfseries P\+A\+S\+S\+ED} = 0, 
+{\bfseries N\+O\+T\+\_\+\+P\+A\+S\+S\+ED} = 1, 
+{\bfseries T\+E\+S\+T\+\_\+\+E\+R\+R\+OR} = -\/1, 
+{\bfseries T\+E\+S\+T\+\_\+\+N\+\_\+\+R\+O\+O\+T\+\_\+\+E\+R\+R\+OR} = -\/2, 
+\newline
+{\bfseries T\+E\+S\+T\+\_\+\+F\+I\+L\+E\+\_\+\+E\+R\+R\+OR} = -\/3, 
+{\bfseries T\+E\+S\+T\+\_\+\+S\+T\+A\+R\+T\+\_\+\+V\+A\+L\+UE} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em enum для результата юнит-\/тестирования. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{Squared_2header_8h_ac3e9c90b50102d3b0c49e28e7cb82dc1}{Calc\+Error\+B\+Divided\+By2A}} (\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$a, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Вычисление погрешности действительной части корней квадратного уравнения. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{Squared_2header_8h_a6dee4cd30d2fad66bf73d91897f37a66}{Calc\+ErrorD}} (\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$a, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$b, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Вычисление погрешности дискриминанта. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Squared_2header_8h_ae42adf9f5f20a034ab9c86696be28874}{Assert\+Scan}} (int n\+\_\+needed, int n\+\_\+scanned)
+\begin{DoxyCompactList}\small\item\em Ассёрт на количество считанных аргументов из стандартного ввода. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Squared_2header_8h_a1cc28507350650f10a43159fe39429d5}{Almost\+Equals}} (double val1, double val2, double sigma)
+\begin{DoxyCompactList}\small\item\em Приблизительное равно. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Squared_2header_8h_aab263e86be1b69ca180faca9a99003cd}{Equals\+TillN}} (double val1, double val2, int n)
+\begin{DoxyCompactList}\small\item\em Уравнивание с округлением до разряда N. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Squared_2header_8h_a22d9fb8daa2130a8ed06cb4a27a30d6d}{Equals\+Complex\+TillN}} (\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$cn1, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$cn2, int n)
+\begin{DoxyCompactList}\small\item\em Уравнивание комплексных чисел с округлением до разряда N. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}} \mbox{\hyperlink{Squared_2header_8h_ab46bd83b6c88c5394b89166755ae483b}{Solve\+Linear}} (\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$data\+\_\+b, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$data\+\_\+c, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em Решатель линейного уравнения. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}} \mbox{\hyperlink{Squared_2header_8h_acf94f937f9c9ae7de0942c8759e5d96d}{Find\+Square\+Roots}} (\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$data\+\_\+a, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$data\+\_\+b, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$data\+\_\+c, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x1, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x2)
+\begin{DoxyCompactList}\small\item\em Вычислитель корней квадратного уравнения. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}} \mbox{\hyperlink{Squared_2header_8h_afa555cd99252c947e288617ca89371a0}{Solve\+Squared}} (\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$data\+\_\+a, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$data\+\_\+b, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$data\+\_\+c, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x1, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x2)
+\begin{DoxyCompactList}\small\item\em Решатель строго квадратного уравнения. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Squared_2header_8h_aadad363f7ccbb8debe7d5bac248b1cd4}{Print\+Complex\+Num}} (\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$number)
+\begin{DoxyCompactList}\small\item\em Печать комплексного числа. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Squared_2header_8h_a8fc4a2643e35d1a052d64c679ead9553}{Print\+Result}} (\mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}} n\+\_\+roots, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x1, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x2)
+\begin{DoxyCompactList}\small\item\em Печать ответа. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Squared_2header_8h_a6d4abd1a17f1982cbf800ef2ce478ec6}{T\+E\+S\+T\+\_\+\+R\+E\+S\+U\+L\+TS}} \mbox{\hyperlink{Squared_2header_8h_a0b3ec0c48ed8fc891744f7784f9e2596}{Test\+One\+Root}} (F\+I\+LE $\ast$tests, \mbox{\hyperlink{Squared_2header_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US}} status\+\_\+test, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x1, int N)
+\begin{DoxyCompactList}\small\item\em Сравнение решения линейного уравнения с ответом теста. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Squared_2header_8h_a6d4abd1a17f1982cbf800ef2ce478ec6}{T\+E\+S\+T\+\_\+\+R\+E\+S\+U\+L\+TS}} \mbox{\hyperlink{Squared_2header_8h_af5bbfd2e89910dc71106242eba3dbff0}{Test\+Two\+Roots}} (F\+I\+LE $\ast$tests, \mbox{\hyperlink{Squared_2header_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US}} status\+\_\+test, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x1, \mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$x2, int N)
+\begin{DoxyCompactList}\small\item\em Сравнение решения строго квадратного уравнения с ответом теста. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Squared_2header_8h_acacfce6de488a8af5a3d306bf90bdddc}{Unit\+Test}} (const char $\ast$path, int N)
+\begin{DoxyCompactList}\small\item\em Юнит-\/тестирование \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с документацией по квадратному уравнению. 
+
+
+
+\doxysubsection{Перечисления}
+\mbox{\Hypertarget{Squared_2header_8h_a56e66b4847cedd4d0664171e62c17bbe}\label{Squared_2header_8h_a56e66b4847cedd4d0664171e62c17bbe}} 
+\index{header.h@{header.h}!MARGIN\_TYPE@{MARGIN\_TYPE}}
+\index{MARGIN\_TYPE@{MARGIN\_TYPE}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{MARGIN\_TYPE}{MARGIN\_TYPE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Squared_2header_8h_a56e66b4847cedd4d0664171e62c17bbe}{M\+A\+R\+G\+I\+N\+\_\+\+T\+Y\+PE}}}
+
+
+
+enum для типа погрешности. 
+
+Данный тип помогает различать типы погрешностей. Вычисляются погрешности дискриминанта и вещественной части корней уравнения. \mbox{\Hypertarget{Squared_2header_8h_a32c27cc471df37f4fc818d65de0a56c4}\label{Squared_2header_8h_a32c27cc471df37f4fc818d65de0a56c4}} 
+\index{header.h@{header.h}!STATUS@{STATUS}}
+\index{STATUS@{STATUS}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{STATUS}{STATUS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Squared_2header_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US}}}
+
+
+
+enum для типа комплексного числа. 
+
+Данный тип содержит в себе информацию о том есть ли у комплексного числа вещественная или мнимая части. \mbox{\Hypertarget{Squared_2header_8h_a6d4abd1a17f1982cbf800ef2ce478ec6}\label{Squared_2header_8h_a6d4abd1a17f1982cbf800ef2ce478ec6}} 
+\index{header.h@{header.h}!TEST\_RESULTS@{TEST\_RESULTS}}
+\index{TEST\_RESULTS@{TEST\_RESULTS}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{TEST\_RESULTS}{TEST\_RESULTS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Squared_2header_8h_a6d4abd1a17f1982cbf800ef2ce478ec6}{T\+E\+S\+T\+\_\+\+R\+E\+S\+U\+L\+TS}}}
+
+
+
+enum для результата юнит-\/тестирования. 
+
+Данный тип информирует о результатах юнит-\/тестирования, а также сообщает тип ошибки в тесте. 
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{Squared_2header_8h_a1cc28507350650f10a43159fe39429d5}\label{Squared_2header_8h_a1cc28507350650f10a43159fe39429d5}} 
+\index{header.h@{header.h}!AlmostEquals@{AlmostEquals}}
+\index{AlmostEquals@{AlmostEquals}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{AlmostEquals()}{AlmostEquals()}}
+{\footnotesize\ttfamily int Almost\+Equals (\begin{DoxyParamCaption}\item[{double}]{val1,  }\item[{double}]{val2,  }\item[{double}]{sigma }\end{DoxyParamCaption})}
+
+
+
+Приблизительное равно. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em val1,val2} & Значения сравниваемых чисел. \\
+\hline
+{\em sigma} & Значение погрешности сравнения.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат логической арифметики. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_ae42adf9f5f20a034ab9c86696be28874}\label{Squared_2header_8h_ae42adf9f5f20a034ab9c86696be28874}} 
+\index{header.h@{header.h}!AssertScan@{AssertScan}}
+\index{AssertScan@{AssertScan}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{AssertScan()}{AssertScan()}}
+{\footnotesize\ttfamily int Assert\+Scan (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+needed,  }\item[{int}]{n\+\_\+scanned }\end{DoxyParamCaption})}
+
+
+
+Ассёрт на количество считанных аргументов из стандартного ввода. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em n\+\_\+needed} & Сколько аргументов нужно. \\
+\hline
+{\em n\+\_\+scanned} & Сколько аргументов прочитано. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Squared_2header_8h_ac3e9c90b50102d3b0c49e28e7cb82dc1}\label{Squared_2header_8h_ac3e9c90b50102d3b0c49e28e7cb82dc1}} 
+\index{header.h@{header.h}!CalcErrorBDividedBy2A@{CalcErrorBDividedBy2A}}
+\index{CalcErrorBDividedBy2A@{CalcErrorBDividedBy2A}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{CalcErrorBDividedBy2A()}{CalcErrorBDividedBy2A()}}
+{\footnotesize\ttfamily double Calc\+Error\+B\+Divided\+By2A (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{a,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Вычисление погрешности действительной части корней квадратного уравнения. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em a,b} & Два указателя на структуры для хранения данных.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Значение вычисленной погрешности. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_a6dee4cd30d2fad66bf73d91897f37a66}\label{Squared_2header_8h_a6dee4cd30d2fad66bf73d91897f37a66}} 
+\index{header.h@{header.h}!CalcErrorD@{CalcErrorD}}
+\index{CalcErrorD@{CalcErrorD}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{CalcErrorD()}{CalcErrorD()}}
+{\footnotesize\ttfamily double Calc\+ErrorD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{a,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{b,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+
+Вычисление погрешности дискриминанта. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em a,b,c} & Три указателя на структуры для хранения данных.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Значение вычисленной погрешности. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_a22d9fb8daa2130a8ed06cb4a27a30d6d}\label{Squared_2header_8h_a22d9fb8daa2130a8ed06cb4a27a30d6d}} 
+\index{header.h@{header.h}!EqualsComplexTillN@{EqualsComplexTillN}}
+\index{EqualsComplexTillN@{EqualsComplexTillN}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{EqualsComplexTillN()}{EqualsComplexTillN()}}
+{\footnotesize\ttfamily int Equals\+Complex\+TillN (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{cn1,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{cn2,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Уравнивание комплексных чисел с округлением до разряда N. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em cn1,cn2} & Указатели на сравниваемые числа. \\
+\hline
+{\em n} & Положительное число разрядов.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат логической арифметики. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_aab263e86be1b69ca180faca9a99003cd}\label{Squared_2header_8h_aab263e86be1b69ca180faca9a99003cd}} 
+\index{header.h@{header.h}!EqualsTillN@{EqualsTillN}}
+\index{EqualsTillN@{EqualsTillN}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{EqualsTillN()}{EqualsTillN()}}
+{\footnotesize\ttfamily int Equals\+TillN (\begin{DoxyParamCaption}\item[{double}]{val1,  }\item[{double}]{val2,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Уравнивание с округлением до разряда N. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em val1,val2} & Значения сравниваемых чисел. \\
+\hline
+{\em n} & Положительное число разрядов.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат логической арифметики. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_acf94f937f9c9ae7de0942c8759e5d96d}\label{Squared_2header_8h_acf94f937f9c9ae7de0942c8759e5d96d}} 
+\index{header.h@{header.h}!FindSquareRoots@{FindSquareRoots}}
+\index{FindSquareRoots@{FindSquareRoots}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{FindSquareRoots()}{FindSquareRoots()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}} Find\+Square\+Roots (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{data\+\_\+a,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{data\+\_\+b,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{data\+\_\+c,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x1,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x2 }\end{DoxyParamCaption})}
+
+
+
+Вычислитель корней квадратного уравнения. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em data\+\_\+a,data\+\_\+b,data\+\_\+c} & Указатели на структуры с коэффициентами a, b и c. \\
+\hline
+{\em x1,x2} & Указатели на корни в родительской функции.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Количество корней типа N\+U\+M\+\_\+\+R\+O\+O\+TS. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_aadad363f7ccbb8debe7d5bac248b1cd4}\label{Squared_2header_8h_aadad363f7ccbb8debe7d5bac248b1cd4}} 
+\index{header.h@{header.h}!PrintComplexNum@{PrintComplexNum}}
+\index{PrintComplexNum@{PrintComplexNum}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{PrintComplexNum()}{PrintComplexNum()}}
+{\footnotesize\ttfamily int Print\+Complex\+Num (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{number }\end{DoxyParamCaption})}
+
+
+
+Печать комплексного числа. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em number} & Указатель на комплексное число. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Squared_2header_8h_a8fc4a2643e35d1a052d64c679ead9553}\label{Squared_2header_8h_a8fc4a2643e35d1a052d64c679ead9553}} 
+\index{header.h@{header.h}!PrintResult@{PrintResult}}
+\index{PrintResult@{PrintResult}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{PrintResult()}{PrintResult()}}
+{\footnotesize\ttfamily int Print\+Result (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}}}]{n\+\_\+roots,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x1,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x2 }\end{DoxyParamCaption})}
+
+
+
+Печать ответа. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em n\+\_\+roots} & Количество корней. \\
+\hline
+{\em x1,x2} & Указатели на полученные корни уравнения. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Squared_2header_8h_ab46bd83b6c88c5394b89166755ae483b}\label{Squared_2header_8h_ab46bd83b6c88c5394b89166755ae483b}} 
+\index{header.h@{header.h}!SolveLinear@{SolveLinear}}
+\index{SolveLinear@{SolveLinear}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{SolveLinear()}{SolveLinear()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}} Solve\+Linear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{data\+\_\+b,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{data\+\_\+c,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+Решатель линейного уравнения. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em data\+\_\+b,data\+\_\+c} & Указатели на структуры с коэффициентами b и c. \\
+\hline
+{\em x} & Указатель на корень в родительской функции.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Количество корней типа N\+U\+M\+\_\+\+R\+O\+O\+TS. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_afa555cd99252c947e288617ca89371a0}\label{Squared_2header_8h_afa555cd99252c947e288617ca89371a0}} 
+\index{header.h@{header.h}!SolveSquared@{SolveSquared}}
+\index{SolveSquared@{SolveSquared}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{SolveSquared()}{SolveSquared()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Squared_2header_8h_a9b01e311f56b71339a819d0522e9b9d3}{N\+U\+M\+\_\+\+R\+O\+O\+TS}} Solve\+Squared (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{data\+\_\+a,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{data\+\_\+b,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structexp__data}{exp\+\_\+data}} $\ast$}]{data\+\_\+c,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x1,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x2 }\end{DoxyParamCaption})}
+
+
+
+Решатель строго квадратного уравнения. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em data\+\_\+a,data\+\_\+b,data\+\_\+c} & Указатели на структуры с коэффициентами a, b и c. \\
+\hline
+{\em x1,x2} & Указатели на корни в родительской функции.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Количество корней типа N\+U\+M\+\_\+\+R\+O\+O\+TS. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_a0b3ec0c48ed8fc891744f7784f9e2596}\label{Squared_2header_8h_a0b3ec0c48ed8fc891744f7784f9e2596}} 
+\index{header.h@{header.h}!TestOneRoot@{TestOneRoot}}
+\index{TestOneRoot@{TestOneRoot}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{TestOneRoot()}{TestOneRoot()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Squared_2header_8h_a6d4abd1a17f1982cbf800ef2ce478ec6}{T\+E\+S\+T\+\_\+\+R\+E\+S\+U\+L\+TS}} Test\+One\+Root (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{tests,  }\item[{\mbox{\hyperlink{Squared_2header_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US}}}]{status\+\_\+test,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x1,  }\item[{int}]{N }\end{DoxyParamCaption})}
+
+
+
+Сравнение решения линейного уравнения с ответом теста. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em tests} & Указатель на поток с тестами. \\
+\hline
+{\em status\+\_\+test} & Тип комплексного числа корня, прочитанный из теста. \\
+\hline
+{\em x1} & Указатель на корень. \\
+\hline
+{\em N} & Разряд до которого округлять.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат теста. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_af5bbfd2e89910dc71106242eba3dbff0}\label{Squared_2header_8h_af5bbfd2e89910dc71106242eba3dbff0}} 
+\index{header.h@{header.h}!TestTwoRoots@{TestTwoRoots}}
+\index{TestTwoRoots@{TestTwoRoots}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{TestTwoRoots()}{TestTwoRoots()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Squared_2header_8h_a6d4abd1a17f1982cbf800ef2ce478ec6}{T\+E\+S\+T\+\_\+\+R\+E\+S\+U\+L\+TS}} Test\+Two\+Roots (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{tests,  }\item[{\mbox{\hyperlink{Squared_2header_8h_a32c27cc471df37f4fc818d65de0a56c4}{S\+T\+A\+T\+US}}}]{status\+\_\+test,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x1,  }\item[{\mbox{\hyperlink{structstruct}{struct}} \mbox{\hyperlink{structcompl__num}{compl\+\_\+num}} $\ast$}]{x2,  }\item[{int}]{N }\end{DoxyParamCaption})}
+
+
+
+Сравнение решения строго квадратного уравнения с ответом теста. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em tests} & Указатель на поток с тестами. \\
+\hline
+{\em status\+\_\+test} & Тип комплексного числа корней, прочитанный из теста. \\
+\hline
+{\em x1,x2} & Указатели на корни. \\
+\hline
+{\em N} & Разряд до которого округлять.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат теста. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Squared_2header_8h_acacfce6de488a8af5a3d306bf90bdddc}\label{Squared_2header_8h_acacfce6de488a8af5a3d306bf90bdddc}} 
+\index{header.h@{header.h}!UnitTest@{UnitTest}}
+\index{UnitTest@{UnitTest}!header.h@{header.h}}
+\doxysubsubsection{\texorpdfstring{UnitTest()}{UnitTest()}}
+{\footnotesize\ttfamily int Unit\+Test (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{int}]{N }\end{DoxyParamCaption})}
+
+
+
+Юнит-\/тестирование 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em path} & Путь к файлу с тестами. \\
+\hline
+{\em N} & Разряд до которого округлять.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат теста. 
+\end{DoxyReturn}

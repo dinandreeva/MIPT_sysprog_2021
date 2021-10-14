@@ -1,0 +1,849 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Системное программирование: Файл Squared/header.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Системное программирование
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3a5fe21e3b1f7242bdc5295512fb9872.html">Squared</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл header.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Заголовочный файл с документацией по квадратному уравнению.  
+<a href="#details">Подробнее...</a></p>
+
+<p><a href="Squared_2header_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a9b01e311f56b71339a819d0522e9b9d3"><td class="memItemLeft" align="right" valign="top"><a id="a9b01e311f56b71339a819d0522e9b9d3"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> { <br />
+&#160;&#160;<b>INF_ROOTS</b> = -1, 
+<b>NO_ROOTS</b> = 0, 
+<b>ONE_ROOT</b> = 1, 
+<b>TWO_ROOTS</b> = 2, 
+<br />
+&#160;&#160;<b>ERROR_ROOTS</b> = -10
+<br />
+ }</td></tr>
+<tr class="memdesc:a9b01e311f56b71339a819d0522e9b9d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum для числа корней. <br /></td></tr>
+<tr class="separator:a9b01e311f56b71339a819d0522e9b9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56e66b4847cedd4d0664171e62c17bbe"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a56e66b4847cedd4d0664171e62c17bbe">MARGIN_TYPE</a> { <b>D</b> = 1, 
+<b>B_DIVIDE_2A</b> = 0
+ }</td></tr>
+<tr class="memdesc:a56e66b4847cedd4d0664171e62c17bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum для типа погрешности.  <a href="Squared_2header_8h.html#a56e66b4847cedd4d0664171e62c17bbe">Подробнее...</a><br /></td></tr>
+<tr class="separator:a56e66b4847cedd4d0664171e62c17bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32c27cc471df37f4fc818d65de0a56c4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a> { <b>REAL</b> = 1, 
+<b>IMAGINARY</b> = -1, 
+<b>COMPLEX</b> = 0, 
+<b>ERROR_STATUS</b> = -10
+ }</td></tr>
+<tr class="memdesc:a32c27cc471df37f4fc818d65de0a56c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum для типа комплексного числа.  <a href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">Подробнее...</a><br /></td></tr>
+<tr class="separator:a32c27cc471df37f4fc818d65de0a56c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d4abd1a17f1982cbf800ef2ce478ec6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a> { <br />
+&#160;&#160;<b>PASSED</b> = 0, 
+<b>NOT_PASSED</b> = 1, 
+<b>TEST_ERROR</b> = -1, 
+<b>TEST_N_ROOT_ERROR</b> = -2, 
+<br />
+&#160;&#160;<b>TEST_FILE_ERROR</b> = -3, 
+<b>TEST_START_VALUE</b> = 2
+<br />
+ }</td></tr>
+<tr class="memdesc:a6d4abd1a17f1982cbf800ef2ce478ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum для результата юнит-тестирования.  <a href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6d4abd1a17f1982cbf800ef2ce478ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ac3e9c90b50102d3b0c49e28e7cb82dc1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#ac3e9c90b50102d3b0c49e28e7cb82dc1">CalcErrorBDividedBy2A</a> (<a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *a, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *b)</td></tr>
+<tr class="memdesc:ac3e9c90b50102d3b0c49e28e7cb82dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вычисление погрешности действительной части корней квадратного уравнения.  <a href="Squared_2header_8h.html#ac3e9c90b50102d3b0c49e28e7cb82dc1">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac3e9c90b50102d3b0c49e28e7cb82dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dee4cd30d2fad66bf73d91897f37a66"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a6dee4cd30d2fad66bf73d91897f37a66">CalcErrorD</a> (<a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *a, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *b, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *c)</td></tr>
+<tr class="memdesc:a6dee4cd30d2fad66bf73d91897f37a66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вычисление погрешности дискриминанта.  <a href="Squared_2header_8h.html#a6dee4cd30d2fad66bf73d91897f37a66">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6dee4cd30d2fad66bf73d91897f37a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae42adf9f5f20a034ab9c86696be28874"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#ae42adf9f5f20a034ab9c86696be28874">AssertScan</a> (int n_needed, int n_scanned)</td></tr>
+<tr class="memdesc:ae42adf9f5f20a034ab9c86696be28874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ассёрт на количество считанных аргументов из стандартного ввода.  <a href="Squared_2header_8h.html#ae42adf9f5f20a034ab9c86696be28874">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae42adf9f5f20a034ab9c86696be28874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cc28507350650f10a43159fe39429d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a1cc28507350650f10a43159fe39429d5">AlmostEquals</a> (double val1, double val2, double sigma)</td></tr>
+<tr class="memdesc:a1cc28507350650f10a43159fe39429d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Приблизительное равно.  <a href="Squared_2header_8h.html#a1cc28507350650f10a43159fe39429d5">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1cc28507350650f10a43159fe39429d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab263e86be1b69ca180faca9a99003cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#aab263e86be1b69ca180faca9a99003cd">EqualsTillN</a> (double val1, double val2, int n)</td></tr>
+<tr class="memdesc:aab263e86be1b69ca180faca9a99003cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Уравнивание с округлением до разряда N.  <a href="Squared_2header_8h.html#aab263e86be1b69ca180faca9a99003cd">Подробнее...</a><br /></td></tr>
+<tr class="separator:aab263e86be1b69ca180faca9a99003cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d9fb8daa2130a8ed06cb4a27a30d6d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a22d9fb8daa2130a8ed06cb4a27a30d6d">EqualsComplexTillN</a> (<a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *cn1, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *cn2, int n)</td></tr>
+<tr class="memdesc:a22d9fb8daa2130a8ed06cb4a27a30d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Уравнивание комплексных чисел с округлением до разряда N.  <a href="Squared_2header_8h.html#a22d9fb8daa2130a8ed06cb4a27a30d6d">Подробнее...</a><br /></td></tr>
+<tr class="separator:a22d9fb8daa2130a8ed06cb4a27a30d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab46bd83b6c88c5394b89166755ae483b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#ab46bd83b6c88c5394b89166755ae483b">SolveLinear</a> (<a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *data_b, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *data_c, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x)</td></tr>
+<tr class="memdesc:ab46bd83b6c88c5394b89166755ae483b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Решатель линейного уравнения.  <a href="Squared_2header_8h.html#ab46bd83b6c88c5394b89166755ae483b">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab46bd83b6c88c5394b89166755ae483b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf94f937f9c9ae7de0942c8759e5d96d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#acf94f937f9c9ae7de0942c8759e5d96d">FindSquareRoots</a> (<a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *data_a, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *data_b, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *data_c, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x1, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x2)</td></tr>
+<tr class="memdesc:acf94f937f9c9ae7de0942c8759e5d96d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вычислитель корней квадратного уравнения.  <a href="Squared_2header_8h.html#acf94f937f9c9ae7de0942c8759e5d96d">Подробнее...</a><br /></td></tr>
+<tr class="separator:acf94f937f9c9ae7de0942c8759e5d96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa555cd99252c947e288617ca89371a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#afa555cd99252c947e288617ca89371a0">SolveSquared</a> (<a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *data_a, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *data_b, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *data_c, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x1, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x2)</td></tr>
+<tr class="memdesc:afa555cd99252c947e288617ca89371a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Решатель строго квадратного уравнения.  <a href="Squared_2header_8h.html#afa555cd99252c947e288617ca89371a0">Подробнее...</a><br /></td></tr>
+<tr class="separator:afa555cd99252c947e288617ca89371a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadad363f7ccbb8debe7d5bac248b1cd4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#aadad363f7ccbb8debe7d5bac248b1cd4">PrintComplexNum</a> (<a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *number)</td></tr>
+<tr class="memdesc:aadad363f7ccbb8debe7d5bac248b1cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печать комплексного числа.  <a href="Squared_2header_8h.html#aadad363f7ccbb8debe7d5bac248b1cd4">Подробнее...</a><br /></td></tr>
+<tr class="separator:aadad363f7ccbb8debe7d5bac248b1cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fc4a2643e35d1a052d64c679ead9553"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a8fc4a2643e35d1a052d64c679ead9553">PrintResult</a> (<a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> n_roots, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x1, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x2)</td></tr>
+<tr class="memdesc:a8fc4a2643e35d1a052d64c679ead9553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печать ответа.  <a href="Squared_2header_8h.html#a8fc4a2643e35d1a052d64c679ead9553">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8fc4a2643e35d1a052d64c679ead9553"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b3ec0c48ed8fc891744f7784f9e2596"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#a0b3ec0c48ed8fc891744f7784f9e2596">TestOneRoot</a> (FILE *tests, <a class="el" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a> status_test, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x1, int N)</td></tr>
+<tr class="memdesc:a0b3ec0c48ed8fc891744f7784f9e2596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сравнение решения линейного уравнения с ответом теста.  <a href="Squared_2header_8h.html#a0b3ec0c48ed8fc891744f7784f9e2596">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0b3ec0c48ed8fc891744f7784f9e2596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5bbfd2e89910dc71106242eba3dbff0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#af5bbfd2e89910dc71106242eba3dbff0">TestTwoRoots</a> (FILE *tests, <a class="el" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a> status_test, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x1, <a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *x2, int N)</td></tr>
+<tr class="memdesc:af5bbfd2e89910dc71106242eba3dbff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сравнение решения строго квадратного уравнения с ответом теста.  <a href="Squared_2header_8h.html#af5bbfd2e89910dc71106242eba3dbff0">Подробнее...</a><br /></td></tr>
+<tr class="separator:af5bbfd2e89910dc71106242eba3dbff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acacfce6de488a8af5a3d306bf90bdddc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Squared_2header_8h.html#acacfce6de488a8af5a3d306bf90bdddc">UnitTest</a> (const char *path, int N)</td></tr>
+<tr class="memdesc:acacfce6de488a8af5a3d306bf90bdddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Юнит-тестирование  <a href="Squared_2header_8h.html#acacfce6de488a8af5a3d306bf90bdddc">Подробнее...</a><br /></td></tr>
+<tr class="separator:acacfce6de488a8af5a3d306bf90bdddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Заголовочный файл с документацией по квадратному уравнению. </p>
+</div><h2 class="groupheader">Перечисления</h2>
+<a id="a56e66b4847cedd4d0664171e62c17bbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56e66b4847cedd4d0664171e62c17bbe">&#9670;&nbsp;</a></span>MARGIN_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Squared_2header_8h.html#a56e66b4847cedd4d0664171e62c17bbe">MARGIN_TYPE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>enum для типа погрешности. </p>
+<p>Данный тип помогает различать типы погрешностей. Вычисляются погрешности дискриминанта и вещественной части корней уравнения. </p>
+
+</div>
+</div>
+<a id="a32c27cc471df37f4fc818d65de0a56c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32c27cc471df37f4fc818d65de0a56c4">&#9670;&nbsp;</a></span>STATUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>enum для типа комплексного числа. </p>
+<p>Данный тип содержит в себе информацию о том есть ли у комплексного числа вещественная или мнимая части. </p>
+
+</div>
+</div>
+<a id="a6d4abd1a17f1982cbf800ef2ce478ec6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d4abd1a17f1982cbf800ef2ce478ec6">&#9670;&nbsp;</a></span>TEST_RESULTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>enum для результата юнит-тестирования. </p>
+<p>Данный тип информирует о результатах юнит-тестирования, а также сообщает тип ошибки в тесте. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="a1cc28507350650f10a43159fe39429d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cc28507350650f10a43159fe39429d5">&#9670;&nbsp;</a></span>AlmostEquals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AlmostEquals </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>val1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>val2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>sigma</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Приблизительное равно. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val1,val2</td><td>Значения сравниваемых чисел. </td></tr>
+    <tr><td class="paramname">sigma</td><td>Значение погрешности сравнения.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Результат логической арифметики. </dd></dl>
+
+</div>
+</div>
+<a id="ae42adf9f5f20a034ab9c86696be28874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae42adf9f5f20a034ab9c86696be28874">&#9670;&nbsp;</a></span>AssertScan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AssertScan </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_needed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_scanned</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ассёрт на количество считанных аргументов из стандартного ввода. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_needed</td><td>Сколько аргументов нужно. </td></tr>
+    <tr><td class="paramname">n_scanned</td><td>Сколько аргументов прочитано. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac3e9c90b50102d3b0c49e28e7cb82dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3e9c90b50102d3b0c49e28e7cb82dc1">&#9670;&nbsp;</a></span>CalcErrorBDividedBy2A()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CalcErrorBDividedBy2A </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вычисление погрешности действительной части корней квадратного уравнения. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a,b</td><td>Два указателя на структуры для хранения данных.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Значение вычисленной погрешности. </dd></dl>
+
+</div>
+</div>
+<a id="a6dee4cd30d2fad66bf73d91897f37a66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dee4cd30d2fad66bf73d91897f37a66">&#9670;&nbsp;</a></span>CalcErrorD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CalcErrorD </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вычисление погрешности дискриминанта. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a,b,c</td><td>Три указателя на структуры для хранения данных.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Значение вычисленной погрешности. </dd></dl>
+
+</div>
+</div>
+<a id="a22d9fb8daa2130a8ed06cb4a27a30d6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22d9fb8daa2130a8ed06cb4a27a30d6d">&#9670;&nbsp;</a></span>EqualsComplexTillN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EqualsComplexTillN </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>cn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>cn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Уравнивание комплексных чисел с округлением до разряда N. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cn1,cn2</td><td>Указатели на сравниваемые числа. </td></tr>
+    <tr><td class="paramname">n</td><td>Положительное число разрядов.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Результат логической арифметики. </dd></dl>
+
+</div>
+</div>
+<a id="aab263e86be1b69ca180faca9a99003cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab263e86be1b69ca180faca9a99003cd">&#9670;&nbsp;</a></span>EqualsTillN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EqualsTillN </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>val1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>val2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Уравнивание с округлением до разряда N. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val1,val2</td><td>Значения сравниваемых чисел. </td></tr>
+    <tr><td class="paramname">n</td><td>Положительное число разрядов.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Результат логической арифметики. </dd></dl>
+
+</div>
+</div>
+<a id="acf94f937f9c9ae7de0942c8759e5d96d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf94f937f9c9ae7de0942c8759e5d96d">&#9670;&nbsp;</a></span>FindSquareRoots()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> FindSquareRoots </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>data_a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>data_b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>data_c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вычислитель корней квадратного уравнения. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data_a,data_b,data_c</td><td>Указатели на структуры с коэффициентами a, b и c. </td></tr>
+    <tr><td class="paramname">x1,x2</td><td>Указатели на корни в родительской функции.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество корней типа NUM_ROOTS. </dd></dl>
+
+</div>
+</div>
+<a id="aadad363f7ccbb8debe7d5bac248b1cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadad363f7ccbb8debe7d5bac248b1cd4">&#9670;&nbsp;</a></span>PrintComplexNum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PrintComplexNum </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печать комплексного числа. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>Указатель на комплексное число. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8fc4a2643e35d1a052d64c679ead9553"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fc4a2643e35d1a052d64c679ead9553">&#9670;&nbsp;</a></span>PrintResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PrintResult </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a>&#160;</td>
+          <td class="paramname"><em>n_roots</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печать ответа. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_roots</td><td>Количество корней. </td></tr>
+    <tr><td class="paramname">x1,x2</td><td>Указатели на полученные корни уравнения. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab46bd83b6c88c5394b89166755ae483b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab46bd83b6c88c5394b89166755ae483b">&#9670;&nbsp;</a></span>SolveLinear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> SolveLinear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>data_b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>data_c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Решатель линейного уравнения. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data_b,data_c</td><td>Указатели на структуры с коэффициентами b и c. </td></tr>
+    <tr><td class="paramname">x</td><td>Указатель на корень в родительской функции.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество корней типа NUM_ROOTS. </dd></dl>
+
+</div>
+</div>
+<a id="afa555cd99252c947e288617ca89371a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa555cd99252c947e288617ca89371a0">&#9670;&nbsp;</a></span>SolveSquared()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Squared_2header_8h.html#a9b01e311f56b71339a819d0522e9b9d3">NUM_ROOTS</a> SolveSquared </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>data_a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>data_b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structexp__data.html">exp_data</a> *&#160;</td>
+          <td class="paramname"><em>data_c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Решатель строго квадратного уравнения. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data_a,data_b,data_c</td><td>Указатели на структуры с коэффициентами a, b и c. </td></tr>
+    <tr><td class="paramname">x1,x2</td><td>Указатели на корни в родительской функции.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество корней типа NUM_ROOTS. </dd></dl>
+
+</div>
+</div>
+<a id="a0b3ec0c48ed8fc891744f7784f9e2596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b3ec0c48ed8fc891744f7784f9e2596">&#9670;&nbsp;</a></span>TestOneRoot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a> TestOneRoot </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>tests</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a>&#160;</td>
+          <td class="paramname"><em>status_test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сравнение решения линейного уравнения с ответом теста. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tests</td><td>Указатель на поток с тестами. </td></tr>
+    <tr><td class="paramname">status_test</td><td>Тип комплексного числа корня, прочитанный из теста. </td></tr>
+    <tr><td class="paramname">x1</td><td>Указатель на корень. </td></tr>
+    <tr><td class="paramname">N</td><td>Разряд до которого округлять.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Результат теста. </dd></dl>
+
+</div>
+</div>
+<a id="af5bbfd2e89910dc71106242eba3dbff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5bbfd2e89910dc71106242eba3dbff0">&#9670;&nbsp;</a></span>TestTwoRoots()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Squared_2header_8h.html#a6d4abd1a17f1982cbf800ef2ce478ec6">TEST_RESULTS</a> TestTwoRoots </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>tests</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="Squared_2header_8h.html#a32c27cc471df37f4fc818d65de0a56c4">STATUS</a>&#160;</td>
+          <td class="paramname"><em>status_test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstruct.html">struct</a> <a class="el" href="structcompl__num.html">compl_num</a> *&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сравнение решения строго квадратного уравнения с ответом теста. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tests</td><td>Указатель на поток с тестами. </td></tr>
+    <tr><td class="paramname">status_test</td><td>Тип комплексного числа корней, прочитанный из теста. </td></tr>
+    <tr><td class="paramname">x1,x2</td><td>Указатели на корни. </td></tr>
+    <tr><td class="paramname">N</td><td>Разряд до которого округлять.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Результат теста. </dd></dl>
+
+</div>
+</div>
+<a id="acacfce6de488a8af5a3d306bf90bdddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acacfce6de488a8af5a3d306bf90bdddc">&#9670;&nbsp;</a></span>UnitTest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int UnitTest </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Юнит-тестирование </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Путь к файлу с тестами. </td></tr>
+    <tr><td class="paramname">N</td><td>Разряд до которого округлять.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Результат теста. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
