@@ -146,6 +146,12 @@ NUM_ROOTS FindSquareRoots(struct exp_data* data_a, struct exp_data* data_b, stru
 NUM_ROOTS SolveSquared(struct exp_data* data_a, struct exp_data* data_b, struct exp_data* data_c, struct compl_num* x1, struct compl_num* x2);
 
 
+/*! \brief Конвертация -0.0 в 0.0
+    \param number Число с плавающей точкой.
+
+    \return Исправленное число с плавающей точкой.
+*/
+float PlusZeroNum (float n);
 
 /*! \brief Печать комплексного числа.
     \param number Указатель на комплексное число.

@@ -1,25 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
-#include "header.h"
-
-// Определяем структуры для экспериментальных данных
-struct exp_data {
-    double value;
-    double sigma;
-};
-
-
-// Определяем структуру для комплексных чисел
-struct compl_num {
-    STATUS status;
-    double real;
-    double im;
-};
-
+#include "squared.h"
 
 int main () {
-    UnitTest ("./Squared/squared_tests.txt", 5);
+    UnitTest ("./squared_tests.txt", 5);
     printf ("Solve square equation\n"
             "Input a, b, c:\n");
 
@@ -200,17 +185,24 @@ NUM_ROOTS SolveSquared (struct exp_data* data_a, struct exp_data* data_b, struct
 
 // Определение функций для печати
 
+float PlusZeroNum (float n) {
+    if (n == -0.0) {
+        n = 0.0;
+    }
+
+    return n;
+}
 // Функция для печати комплексных чисел
 int PrintComplexNum (struct compl_num* number) {
     switch (number->status) {
         case REAL:
-            printf ("%lg", number->real);
+            printf ("%lg", PlusZeroNum(number->real));
             break;
         case IMAGINARY:
-            printf ("%lgi", number->im);
+            printf ("%lgi", PlusZeroNum(number->im));
             break;
         case COMPLEX:
-            printf ("%lg + %lgi", number->real, number->im);
+            printf ("%lg %+lgi", PlusZeroNum(number->real), PlusZeroNum(number->im));
             break;
         default:
             printf ("Error in PrintComplexNum!\n"
