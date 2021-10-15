@@ -1,25 +1,32 @@
 #include <stdio.h>
+#include "stack.h"
 
 int main() {
-    
+    Stack stk = {nullptr, nullptr};
+    StackCtor(&stk, sizeof(int), 10);
+    StackPush(&stk, );
+    StackDtor(&stk)
+    return 0;
 }
 
-
-int stack_con (size_t s_size) {
-    stack* new_s = calloc (1, sizeof(s_size));
-    *new_s_pointer = {NULL, NULL, {new_s_pointer, 1}};
+void StackCtor (Stack* stk, size_t t_size, size_t capacity) {
+    stk = (Stack*) calloc (1, sizeof (Stack));
+    stk->data = calloc (capacity, sizeof (t_size));
+    stk->s_info->s_length = 0;
+    stk->s_info->size = sizeof (StackInfo);
+    stk->s_info->capacity = capacity;
 }
 
-int stack_destructor (stack* s_head) {
+void StackDtor (Stack* stk) {
     stack* cur_stack = NULL;
     while (s_head->prev_data != NULL) {
         cur_stack = s_head->prev_item;
-        free(cur_stack);
+        free (cur_stack);
     }
 }
 
 
-int stack_push(Stack* s_head, int* item[]) {
+int StackPush(Stack* stk, ) {
     s_head->
 }
 

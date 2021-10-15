@@ -1,9 +1,16 @@
-typedef struct stack_info {
-    stack* stack;
+typedef struct {
+    Stack* stack;
     int s_length;
-}
+    size_t t_size
+    size_t capacity;
+    size_t size;
+} StackInfo;
 
-typedef struct stack {
-    void* data[];
-    struct* stack_info s_info;
-}
+typedef struct {
+    StackInfo* s_info;
+    void* data;
+} Stack;
+
+typedef enum {
+    LOTOFMEM = 4096
+} MEMORY_AM;
