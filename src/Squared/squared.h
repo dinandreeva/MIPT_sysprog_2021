@@ -52,7 +52,15 @@ typedef enum {
     TEST_START_VALUE = 2
 } TEST_RESULTS;
 
+/*! \brief enum для детектирования ошибок сканирования.
 
+    Данный тип информирует о результатах сканирования.
+*/
+typedef enum {
+    SCAN_OK = 0,
+    SCAN_WRONG_N_ARGS = -1,
+    SCAN_NO_ARGS = -2,
+} SCAN_RESULTS;
 /// \brief Cтруктура для совместного хранения величины и её погрешности.
 struct exp_data {
     double value;
@@ -84,11 +92,11 @@ double CalcErrorBDividedBy2A(struct exp_data* a, struct exp_data* b);
 double CalcErrorD(struct exp_data* a, struct exp_data* b, struct exp_data* c);
 
 
-/*! \brief Ассёрт на количество считанных аргументов из стандартного ввода.
+/*! \brief Проверка на количество считанных аргументов из стандартного ввода.
     \param n_needed Сколько аргументов нужно.
     \param n_scanned Сколько аргументов прочитано.
 */
-int AssertScan(int n_needed, int n_scanned);
+int CheckScan(int n_needed, int n_scanned);
 
 
 /*! \brief Приблизительное равно.
